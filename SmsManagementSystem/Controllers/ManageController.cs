@@ -170,6 +170,7 @@ namespace SmsManagementSystem.Controllers
         [HttpPost]
         public ActionResult Edit(ManageVM userdet)
         {
+            ScryptEncoder encoder = new ScryptEncoder();
             if (ModelState.IsValid)
             {
                 var usersInDb = Db.Users.Single(c => c.UserID == userdet.UserID);
@@ -199,8 +200,12 @@ namespace SmsManagementSystem.Controllers
 
                     }
 
+                 
+
+
                 }
 
+             
 
                 Db.SaveChanges();
             }
@@ -337,6 +342,28 @@ namespace SmsManagementSystem.Controllers
             }
 
             return PartialView(userheadpic);
+        }
+
+
+        public ActionResult ResetPasswordPicture() // NAME VIEW IN DASHBOARD
+        {
+            if (Session["Role_Id"] == null)
+            {
+                return RedirectToAction("logout", "Account");
+            }
+            //if ((int)Session["Role_Id"] != 1)
+            //{
+            //    return RedirectToAction("logout", "Account");
+            //}
+            var resetpic = Db.Users.ToList();
+
+            var sess_id = (int)Session["LoginID"];
+            var userID = Db.Users.FirstOrDefault(o => o.LoginID == sess_id)?.UserID;
+
+            resetpic = resetpic.Where(d => d.UserID == userID).ToList();
+
+
+            return PartialView(resetpic);
         }
 
 

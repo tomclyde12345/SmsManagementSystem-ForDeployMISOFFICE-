@@ -109,6 +109,8 @@
                                     @Html.TextBoxFor(m => m.files, "", new { @type = "file", @multiple = "multiple", @id = "imageBrowes", @class = "form-control", style = "color:#ff3939;height:40px; border:1px solid black;" })
 
                                 </div>
+
+                             
                                 @Html.HiddenFor(o => o.UserID)
                             </div>
                         }
@@ -187,6 +189,22 @@
                                     @Html.TextBoxFor(m => m.files, "", new { @type = "file", @multiple = "multiple", @id = "imageBrowes", @class = "form-control", style = "color:#ff3939;height:40px; border:1px solid black;" })
 
                                 </div>
+
+
+                                <div class="form-group">
+
+
+                                    <div class="tom" style=" display:none;">
+                                        Password  <label class="fa fa-building-o" style="color:black"> </label>
+                                    </div>
+
+
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "col-md-12", style = "height:40px;display:none;" } })
+
+
+                                </div>
+
+
                                 @Html.HiddenFor(o => o.UserID)
                             </div>
                         }

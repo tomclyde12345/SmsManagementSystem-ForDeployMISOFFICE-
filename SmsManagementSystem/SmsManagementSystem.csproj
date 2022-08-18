@@ -959,6 +959,7 @@
     <Content Include="Views\Manage\AdminPartial.cshtml" />
     <Content Include="Views\Manage\AdminPartialHeaderpic.cshtml" />
     <Content Include="Views\Manage\UserPartialHeaderPic.cshtml" />
+    <Content Include="Views\Manage\ResetPasswordPicture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
