@@ -1,0 +1,105 @@
+﻿@model SmsManagementSystem.Models.Login
+
+@{
+    ViewBag.Title = "Login Sms Management System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!--A Design by W3layouts
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>SMS MANAGEMENT SYSTEM</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Groovy Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta Tags -->
+    <!-- Font-Awesome-CSS -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!--// Font-Awesome-CSS -->
+    <!-- Required Css -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <!--// Required Css -->
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+    <!--//fonts-->
+</head>
+
+<body>
+    <link href="~/Content/LoginCss/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/LoginCss/style.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+    <script src="~/lib/font-awesome/js/fontawesome.js"></script>
+    <script src="~/lib/font-awesome/js/fontawesome.min.js"></script>
+    <link href="~/lib/font-awesome/css/solid.min.css" rel="stylesheet" />
+
+
+
+
+    @using (Html.BeginForm())
+
+    {
+        @Html.AntiForgeryToken()
+
+        <!--background-->
+<h1 style=" font-weight: 700;">SMS MANAGEMENT SYSTEM</h1>
+        <!-- Main-Content -->
+        <div class="main-w3layouts-form">
+            <h2>LOGIN</h2>
+            <!-- main-w3layouts-form -->
+            <form action="#" method="post">
+                <div class="fields-w3-agileits">
+                    <span class="fa fa-user" style="color:white;" aria-hidden="true"></span>
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { placeholder = "Username" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger custom-input" })
+                </div>
+                <div class="fields-w3-agileits">
+                    <span class="fa fa-key" style="color:white;" aria-hidden="true"></span>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger custom-input" })
+                </div>
+                <div class="remember-section-wthree">
+                    <ul>
+                        <li>
+                            <label class="anim">
+                                <input type="checkbox" class="checkbox">
+                                <span> Remember me ?</span>
+                            </label>
+                        </li>
+                        <li> <a href="#">Forgot password?</a> </li>
+                    </ul>
+                    <div class="clear"> </div>
+                </div>
+
+                <div class="submit-agileits">
+                    <input type="submit" value="Login" class="btn btn-default" style="border-radius:20px; background-color:yellow; color:black;" />
+                </div>
+                <div class="custom-val" style="color:red;">
+                    @ViewBag.Message
+                </div>
+            </form>
+        </div>
+    }
+</body>
+
+</html>
+
+

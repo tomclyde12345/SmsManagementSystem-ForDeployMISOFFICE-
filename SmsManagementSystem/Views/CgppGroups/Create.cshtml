@@ -1,0 +1,128 @@
+﻿@model SmsManagementSystem.ViewModel.GroupMessageVM
+
+
+@{
+    ViewBag.Title = "Create Office Sms Management System";
+    Layout = (int)Session["Role_Id"] == 1 ? "~/Views/Shared/_LayoutAdmin.cshtml" : "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+
+@*<h2>@((int)Session["Role_Id"] == 1 ? "Admin" : "User")</h2>*@
+<body style="height: 100vh;">
+    <!--header-->
+    <div class="agileheader">
+        <h3 class="title1">CREATE GROUP MESSAGE</h3>
+    </div>
+    @using (Html.BeginForm("Save", "Drafts"))
+    {
+        <!--//header-->
+        <!--main-->
+        <div class="main-w3l">
+            <div class="w3layouts-main" style="height: auto !important; width: 100% !important; background-color: #fff;">
+                <div class="form-title" style="height: 60px; color: #6F6F6F; "><h3>Create Group Message Form : </h3></div>
+                <form action="#" method="post">
+                    <div class="row">
+
+                        <div class="alert alert-info">
+                            Please fill details to create a  group  message
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 tom">
+                                <label style="color:black;"> GROUPNAME </label> <label class="fa fa-object-group" style="color:black;"> </label> <br />
+                            </div>
+                            <div class="form-group">
+                                @if (ViewBag.GroupsList != null)
+                                {
+                                    @Html.DropDownListFor(model => model.GroupId, ViewBag.GroupsList as SelectList, "--SELECT GROUPS--", new { @class = "form-control", name = "Draft.sendTo", @id= "GroupId" })
+                                }
+                            </div>
+
+                            <div class="form-group">
+                                @Html.DropDownListFor(model => model.PhoneId, new SelectList(" "), "--SELECT CELLPHONE #--", new { @class = "form-control", name = "Draft.sendTo", @id= "PhoneId" })
+                            </div>
+
+                            <button type="button" class="chosen-toggle select">SELECT ALL <i class="fa fa-check" style="color:green;"></i></button>
+                            <button type="button" class="chosen-toggle deselect">DESELECT ALL <i class="fa fa-times" style="color:red !important;"></i></button>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-2 tom">
+                                <label style="color:black;"> MESSAGE </label> <label class="fa fa-comment" style="color:black;"> </label> <br />
+                            </div>
+                            <div class="form-group">
+
+                                @Html.TextAreaFor(u => u.Draft.msg, new { @class = " message", required = "required", @placeholder = "Enter a Message Here",@id="select", name = "Draft.sendTo", style = "font-size:24px;width:780px;height:200px;"})
+                            </div>
+
+
+
+                            @Html.HiddenFor(o => o.Draft.draftID)
+
+                            <div class="text-center">
+                                <input type="submit" value="CREATE" class="btn btn-default" style="width: 120px; color:white; background-color: rgba(97, 100, 193, 0.85); height: 50px; border-radius: 20px; font-weight: 800;" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+
+
+
+        <script src="~/Scripts/fontawesome.js"></script>
+        <script src="~/Scripts/fontawesome.min.js"></script>
+        <link href="~/Content/toastr.css" rel="stylesheet" />
+        <script src="~/Scripts/toastr.js"></script>
+        <script src="~/Scripts/toastr.min.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    }
+
+</body>
+
+@section scripts{
+
+
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+
+            $("#GroupId").change(function () {
+                $.get("/CgppGroups/GetPhonebookList", { GroupId: $("#GroupId").val() }, function (data) {
+                    $("#PhoneId").empty();
+                    $.each(data, function (index, row) {
+                        $("#PhoneId").append("<option value='" + row.PhoneId + "'>" + row.CellphoneNum + " | " + row.FullName + " </option>") //MULTIPLE DEPENDENT DROPDOWN
+                    });
+                });
+            })
+        });
+
+
+        $('select').chosen({ width: "300px" });
+        $('.chosen-toggle').each(function (index) { //SELECT AND DESELECT
+            console.log(index);
+            $(this).on('click', function () {
+                console.log($(this).parent().find('option').text());
+                $(this).parent().find('option').prop('selected', $(this).hasClass('select')).parent().trigger('chosen:updated');
+            });
+        });
+
+
+    </script>
+}
+
+
+
+
+
+

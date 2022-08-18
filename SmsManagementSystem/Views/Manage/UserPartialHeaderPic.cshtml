@@ -1,0 +1,15 @@
+﻿
+
+@foreach (var userheadpic in Model)
+{
+
+    if (userheadpic.FilePath == null)
+    {
+        <img src="~/Images/city-hall.png" style="width:50px;height:50px;border-radius:50%;" />
+    }
+    else
+    {
+
+        <img src="@userheadpic.FilePath" width="50" height="50" style="border-radius:50%" />
+    }
+}

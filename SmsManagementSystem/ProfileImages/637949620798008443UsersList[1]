@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Sms Management System - </title>
+    <link href="/Content/css2" rel="stylesheet"/>
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+
+    <link href="/Content/toastr.css" rel="stylesheet" />
+</head>
+<body>
+    <!--<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Home </a>
+            </div>
+            <div class="navbar-collapse collapse">asd
+                <ul class="nav navbar-nav">-->
+    
+    <!--<li><a href="/Account/Login">LOGIN</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>-->
+    <div class="container-fluid body-content">
+        
+
+
+
+<!--A Design by W3layouts
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>SMS MANAGEMENT SYSTEM</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Groovy Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta Tags -->
+    <!-- Font-Awesome-CSS -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!--// Font-Awesome-CSS -->
+    <!-- Required Css -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <!--// Required Css -->
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+    <!--//fonts-->
+</head>
+
+<body>
+    <link href="/Content/LoginCss/font-awesome.css" rel="stylesheet" />
+    <link href="/Content/LoginCss/style.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+    <script src="/lib/font-awesome/js/fontawesome.js"></script>
+    <script src="/lib/font-awesome/js/fontawesome.min.js"></script>
+    <link href="/lib/font-awesome/css/solid.min.css" rel="stylesheet" />
+
+
+
+
+<form action="/Account/Login" method="post"><input name="__RequestVerificationToken" type="hidden" value="BMb64t-PyfyklUN8lBGZ_L1HUAcN9VOmxw7PLBwgKts2WQMo6Pe07n6u2FHP8ltrFJ455CIQEvIYzY_jD_ao16ddtK6LEXL40hqP5bd9wxQ1" />        <!--background-->
+<h1 style=" font-weight: 700;">SMS MANAGEMENT SYSTEM</h1>
+        <!-- Main-Content -->
+        <div class="main-w3layouts-form">
+            <h2>LOGIN</h2>
+            <!-- main-w3layouts-form -->
+            <form action="#" method="post">
+                <div class="fields-w3-agileits">
+                    <span class="fa fa-user" style="color:white;" aria-hidden="true"></span>
+                    <input class="text-box single-line" data-val="true" data-val-required="The Username Field is Required" id="Username" name="Username" placeholder="Username" type="text" value="" />
+                    <span class="field-validation-valid text-danger custom-input" data-valmsg-for="Username" data-valmsg-replace="true"></span>
+                </div>
+                <div class="fields-w3-agileits">
+                    <span class="fa fa-key"  style="color:white;" aria-hidden="true"></span>
+                    <input class="text-box single-line password" data-val="true" data-val-required="Please Input Password" id="Password" name="Password" placeholder="Password" type="password" />
+                    <span class="field-validation-valid text-danger custom-input" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                </div>
+                <div class="remember-section-wthree">
+                    <ul>
+                        <li>
+                            <label class="anim">
+                                <input type="checkbox" class="checkbox">
+                                <span> Remember me ?</span>
+                            </label>
+                        </li>
+                        <li> <a href="#">Forgot password?</a> </li>
+                    </ul>
+                    <div class="clear"> </div>
+                </div>
+
+                <div class="submit-agileits">
+                    <input type="submit" value="Login" class="btn btn-default" style="border-radius:20px; background-color:yellow; color:black;"  />
+                </div>
+            </form>
+        </div>
+</form></body>
+
+</html>
+
+
+
+        
+        
+    </div>
+
+    <script src="/Scripts/jquery-3.4.1.js"></script>
+<script src="/Scripts/datatables/jquery.datatables.js"></script>
+<script src="/Scripts/datatables/datatables.bootstrap.js"></script>
+
+    <script src="/Scripts/toastr.min.js"></script>
+<script src="/Content/datatables/css/datatables.bootstrap.min.css"></script>
+<script src="/Scripts/bootstrap.js"></script>
+
+    <script src="/Scripts/toastr.js"></script>
+    
+</body>
+</html>

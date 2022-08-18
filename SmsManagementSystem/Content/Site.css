@@ -1,0 +1,253 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #777;
+    border-color: #fff
+}
+
+/*
+
+  Mga dinagdag ito
+*/
+
+#searchTable tr {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: #171b1e;
+    padding: 10px;
+}
+
+#draftlisttable thead tr th:first-child, #draftlisttable tbody tr td:first-child, #draftlisttable tfoot tr th:first-child, #searchTable thead tr th:first-child {
+    display: none;
+}
+
+#draftlisttable tr td {
+    border-bottom: 1px solid #c9c37c;
+}
+
+.dataTables_wrapper div.dataTables_info {
+    color: red;
+}
+
+.dataTables_wrapper div.dataTables_length .ui.selection.dropdown {
+    color: red;
+}
+
+.dataTables_length label {
+    color: red;
+}
+
+#draftlisttable th {
+    color: black;
+    background-color: #56575B;
+}
+
+#draftlisttable td {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.table.dataTable.table thead th.sorting:after {
+    color: yellow;
+}
+
+.ui.pagination.menu .item {
+    background-color: darkgray;
+    color: black;
+}
+
+.ui.pagination.menu .active.item {
+    background-color: rgb(0 0 0 / 82%);
+    color: rgba(0,0,0,.95);
+}
+
+#searchTable th {
+    background-color: #56575B;
+}
+
+#searchTable2 th {
+    background-color: #56575B;
+}
+
+.ui.pagination.menu {
+    background-color: #56575B;
+}
+
+#draftlisttable tfoot th {
+    color: black;
+    font-weight: bolder;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+.hideThis {
+    display: none;
+}
+
+#searchTable2 tr {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: #171b1e;
+    padding: 10px;
+}
+
+#searchTable2 thead tr th:nth-child(4), #searchTable2 thead tr th:nth-child(5), #searchTable2 thead tr th:nth-child(6) {
+    display: none;
+}
+
+#searchTable tr {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: #171b1e;
+    padding: 10px;
+}
+
+#searchTable thead tr th:nth-child(4), #searchTable2 thead tr th:nth-child(5), #searchTable2 thead tr th:nth-child(6) {
+    display: none;
+}
+
+#draftlisttable2 thead tr th:first-child, #draftlisttable2 tbody tr td:first-child, #draftlisttable2 tfoot tr th:first-child, #searchTable2 thead tr th:first-child {
+    display: none;
+}
+
+#draftlisttable thead tr th:first-child, #draftlisttable tbody tr td:first-child, #draftlisttable tfoot tr th:first-child, #searchTable thead tr th:first-child {
+    display: none;
+}
+
+#draftlisttable2 tr td {
+    border-bottom: 1px solid #c9c37c;
+}
+
+.dataTables_wrapper div.dataTables_info {
+    color: red;
+}
+
+.dataTables_wrapper div.dataTables_length .ui.selection.dropdown {
+    color: red;
+}
+
+.dataTables_length label {
+    color: red;
+}
+
+#draftlisttable2 th {
+    color: black;
+    background-color: #56575B;
+}
+
+#draftlisttable2 td {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.scrolllamg .chosen-container-multi .chosen-choices {
+    overflow-y: auto;
+    max-height: 100px;
+}
+
+.inputmultiple .select2-container--default.select2-container--focus .select2-selection--multiple {
+    overflow-y: auto;
+    max-height: 100px;
+    background-color: black;
+}
+
+.select2-results__option {
+    color: red;
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+    color: white;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    background-color: #c33f3f !important;
+}
+
+.search-choice-close {
+    background-color: red !important;
+}
+
+.messagelabel {
+    margin-left: -556px;
+    color: black;
+}
+
+.officenamelabel {
+    /*margin-left:-266PX;
+    color:black;*/
+}
+
+.chosen-container-single .chosen-single {
+    height: 40px !important;
+}
+
+.chosen-container-single .chosen-search input[type="text"] {
+    color: white !important;
+}
+span .field-validation-error {
+    color: red;
+}
+#Phonebook_Position-error{
+    color:red;
+} .chosen-choices {
+    overflow-y: auto;
+    max-height: 100px;
+}
+.chosen-container chosen-container-multi chosen-container-active {
+    overflow-y: auto;
+    max-height: 100px;
+}
+.scrolllamg .chosen-container-multi .chosen-choices {
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.tago {
+    display: none;
+}
+#MultipleDropdown_chosen .chosen-container .chosen-container-multi{
+    width: 300px;
+    display:inline;
+}

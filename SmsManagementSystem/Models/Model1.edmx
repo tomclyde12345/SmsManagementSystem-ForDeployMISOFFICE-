@@ -1,0 +1,2031 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ilsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Broadcasters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tbl_id" Type="int" />
+          <Property Name="systemC" Type="int" />
+        </EntityType>
+        <EntityType Name="CgppDivision">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="OfficeId" Type="int" />
+        </EntityType>
+        <EntityType Name="CgppDraft">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="DivisionId" Type="int" />
+          <Property Name="UsersId" Type="int" />
+          <Property Name="DraftsId" Type="int" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="PhonebooksId" Type="int" />
+        </EntityType>
+        <EntityType Name="CgppGroups">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CgppOffices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="GroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="CgppPhonebook">
+          <Key>
+            <PropertyRef Name="PhoneId" />
+          </Key>
+          <Property Name="PhoneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CellNum" Type="int" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="CellphoneNum" Type="nvarchar" MaxLength="300" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="DivisionId" Type="int" />
+          <Property Name="UsersId" Type="int" />
+          <Property Name="GroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="CgppRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Classification">
+          <Key>
+            <PropertyRef Name="classid" />
+          </Key>
+          <Property Name="classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classification" Type="nvarchar" MaxLength="200" />
+          <Property Name="isactive" Type="int" />
+        </EntityType>
+        <EntityType Name="ConcernOffices">
+          <Key>
+            <PropertyRef Name="concernid" />
+          </Key>
+          <Property Name="concernid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formatid" Type="int" />
+          <Property Name="officeid" Type="int" />
+          <Property Name="isactive" Type="int" />
+          <Property Name="isallAccess" Type="int" />
+        </EntityType>
+        <EntityType Name="Drafts">
+          <Key>
+            <PropertyRef Name="draftID" />
+          </Key>
+          <Property Name="draftID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sendto" Type="nvarchar" MaxLength="15" />
+          <Property Name="msg" Type="nvarchar(max)" />
+          <Property Name="tag" Type="int" />
+        </EntityType>
+        <EntityType Name="EntryLogs">
+          <Key>
+            <PropertyRef Name="logid" />
+          </Key>
+          <Property Name="logid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eid" Type="int" />
+          <Property Name="date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FormattedMessages">
+          <Key>
+            <PropertyRef Name="smsid" />
+          </Key>
+          <Property Name="smsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formatid" Type="int" />
+          <Property Name="msg" Type="nvarchar(max)" />
+          <Property Name="sender" Type="nvarchar" MaxLength="15" />
+          <Property Name="receiver" Type="nvarchar" MaxLength="15" />
+          <Property Name="isactive" Type="int" />
+          <Property Name="date_received" Type="datetime" />
+          <Property Name="unread" Type="int" />
+          <Property Name="action" Type="int" />
+          <Property Name="broadcast" Type="int" />
+          <Property Name="classid" Type="int" />
+          <Property Name="officeid" Type="int" />
+        </EntityType>
+        <EntityType Name="Grouping_cellnumbers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="groupid" Type="int" />
+          <Property Name="pk" Type="int" Nullable="false" />
+          <Property Name="systemC" Type="int" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="keyword" Type="nvarchar" MaxLength="200" />
+          <Property Name="subgroup" Type="nvarchar" MaxLength="200" />
+          <Property Name="isactive" Type="int" />
+          <Property Name="isdeletable" Type="int" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="LoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="Username" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Isdeleted" Type="bit" />
+          <Property Name="CreateOn" Type="date" />
+        </EntityType>
+        <EntityType Name="m_tblSMS_SystemFormat">
+          <Key>
+            <PropertyRef Name="codeId" />
+          </Key>
+          <Property Name="codeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sms_format" Type="varchar(max)" />
+          <Property Name="sms_description" Type="varchar(max)" />
+          <Property Name="stored_proc_name" Type="varchar(max)" />
+          <Property Name="stored_proc_param_format" Type="varchar(max)" />
+          <Property Name="is_with_return" Type="int" />
+          <Property Name="separator" Type="varchar" MaxLength="1" />
+          <Property Name="is_active" Type="int" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="int" Nullable="false" />
+          <Property Name="Sid" Type="int" />
+          <Property Name="sort" Type="int" />
+          <Property Name="menuname" Type="nvarchar" MaxLength="100" />
+          <Property Name="action" Type="nvarchar" MaxLength="100" />
+          <Property Name="controller" Type="nvarchar" MaxLength="100" />
+          <Property Name="icon" Type="nvarchar" MaxLength="200" />
+          <Property Name="role" Type="int" />
+        </EntityType>
+        <EntityType Name="MobileNetProvider">
+          <Key>
+            <PropertyRef Name="netProviderID" />
+          </Key>
+          <Property Name="netProviderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="networkname" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Municipality">
+          <Key>
+            <PropertyRef Name="munid" />
+          </Key>
+          <Property Name="munid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Municipalityname" Type="nvarchar" MaxLength="50" />
+          <Property Name="district" Type="int" />
+        </EntityType>
+        <EntityType Name="OfficialsInformations">
+          <Key>
+            <PropertyRef Name="offid" />
+          </Key>
+          <Property Name="offid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="nvarchar" MaxLength="200" />
+          <Property Name="lname" Type="nvarchar" MaxLength="200" />
+          <Property Name="mname" Type="nvarchar" MaxLength="200" />
+          <Property Name="district" Type="nchar" MaxLength="10" />
+          <Property Name="cellno" Type="nvarchar" MaxLength="300" />
+          <Property Name="networkID" Type="int" />
+          <Property Name="OfficialDescID" Type="int" />
+          <Property Name="munid" Type="int" />
+          <Property Name="suffix" Type="nvarchar" MaxLength="10" />
+          <Property Name="bday" Type="date" />
+          <Property Name="mynumbers" Type="int" />
+          <Property Name="gender" Type="int" />
+        </EntityType>
+        <EntityType Name="OfficialsPosition">
+          <Key>
+            <PropertyRef Name="descid" />
+          </Key>
+          <Property Name="descid" Type="int" Nullable="false" />
+          <Property Name="keword" Type="nvarchar" MaxLength="100" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Phonebook">
+          <Key>
+            <PropertyRef Name="phoneid" />
+          </Key>
+          <Property Name="phoneid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cnum" Type="nvarchar" MaxLength="300" />
+          <Property Name="owner_fname" Type="nvarchar" MaxLength="300" />
+          <Property Name="owner_lname" Type="nvarchar" MaxLength="300" />
+          <Property Name="gender" Type="int" />
+          <Property Name="bday" Type="date" />
+          <Property Name="owner_mname" Type="nvarchar" MaxLength="5" />
+          <Property Name="suffix" Type="nvarchar" MaxLength="5" />
+          <Property Name="officeid" Type="int" />
+          <Property Name="eid" Type="int" />
+          <Property Name="isactive" Type="int" />
+        </EntityType>
+        <EntityType Name="pilaKeyword">
+          <Key>
+            <PropertyRef Name="pilaid" />
+          </Key>
+          <Property Name="pilaid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prodcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="price" Type="money" />
+          <Property Name="isactive" Type="int" />
+          <Property Name="dateEntered" Type="datetime" />
+          <Property Name="eid" Type="int" />
+        </EntityType>
+        <EntityType Name="PrefixMobileNumber">
+          <Key>
+            <PropertyRef Name="netsmsID" />
+          </Key>
+          <Property Name="netsmsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prefix" Type="nvarchar" MaxLength="4" />
+          <Property Name="networkID" Type="int" />
+        </EntityType>
+        <EntityType Name="rawMessage">
+          <Key>
+            <PropertyRef Name="smsid" />
+          </Key>
+          <Property Name="smsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="msg" Type="nvarchar(max)" />
+          <Property Name="sender" Type="nvarchar" MaxLength="15" />
+          <Property Name="IMSI" Type="nvarchar" MaxLength="50" />
+          <Property Name="networkID" Type="int" />
+          <Property Name="receiver" Type="nvarchar" MaxLength="15" />
+          <Property Name="date_received" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SentItems">
+          <Key>
+            <PropertyRef Name="SentItemsID" />
+          </Key>
+          <Property Name="SentItemsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Destination" Type="nvarchar" MaxLength="15" />
+          <Property Name="message" Type="nvarchar(max)" />
+          <Property Name="eid" Type="int" />
+          <Property Name="DateSent" Type="datetime" />
+          <Property Name="Systemname" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="SimCardInfo">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IMSI" Type="nvarchar" MaxLength="50" />
+          <Property Name="ownNumber" Type="nvarchar" MaxLength="11" />
+          <Property Name="networkID" Type="int" />
+        </EntityType>
+        <EntityType Name="SMSFormats">
+          <Key>
+            <PropertyRef Name="formatID" />
+          </Key>
+          <Property Name="formatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="keyword" Type="nvarchar" MaxLength="50" />
+          <Property Name="reply" Type="nvarchar" MaxLength="200" />
+          <Property Name="smsformat" Type="nvarchar" MaxLength="200" />
+          <Property Name="Isdisplay" Type="int" />
+          <Property Name="autoExec" Type="int" />
+          <Property Name="isactive" Type="int" />
+        </EntityType>
+        <EntityType Name="SmsPDU">
+          <Key>
+            <PropertyRef Name="conid" />
+          </Key>
+          <Property Name="conid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SmsPdu" Type="nvarchar(max)" />
+          <Property Name="octet" Type="nvarchar" MaxLength="20" />
+          <Property Name="currentNumber" Type="int" />
+          <Property Name="TotalMessages" Type="int" />
+          <Property Name="ReferenceNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="SystemUsers">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="lname" Type="nvarchar" MaxLength="50" />
+          <Property Name="pword" Type="nvarchar" MaxLength="50" />
+          <Property Name="usrname" Type="nvarchar" MaxLength="50" />
+          <Property Name="role" Type="int" />
+        </EntityType>
+        <EntityType Name="tblGender">
+          <Key>
+            <PropertyRef Name="gid" />
+          </Key>
+          <Property Name="gid" Type="int" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblStuffNumbers">
+          <Key>
+            <PropertyRef Name="xid" />
+          </Key>
+          <Property Name="xid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cnums" Type="nvarchar(max)" />
+          <Property Name="msg" Type="nvarchar(max)" />
+          <Property Name="tag" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="UnidentifiedNetwork">
+          <Key>
+            <PropertyRef Name="unidentifiedNoID" />
+          </Key>
+          <Property Name="unidentifiedNoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cnum" Type="nvarchar" MaxLength="20" />
+          <Property Name="prefix" Type="nvarchar" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginID" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Gender" Type="varchar" MaxLength="100" />
+          <Property Name="EmailID" Type="varchar" MaxLength="100" />
+          <Property Name="DistrictID" Type="int" />
+          <Property Name="OfficeID" Type="int" />
+          <Property Name="DivisionID" Type="int" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="FilePath" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_CgppDivision_CgppOffices">
+          <End Role="CgppOffices" Type="Self.CgppOffices" Multiplicity="0..1" />
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppDivision">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_CgppDivision">
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppDivision">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_CgppOffices">
+          <End Role="CgppOffices" Type="Self.CgppOffices" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_CgppPhonebook">
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppPhonebook">
+              <PropertyRef Name="PhoneId" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="PhonebooksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_Drafts">
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drafts">
+              <PropertyRef Name="draftID" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="DraftsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="UsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppOffices_CgppGroups">
+          <End Role="CgppGroups" Type="Self.CgppGroups" Multiplicity="0..1" />
+          <End Role="CgppOffices" Type="Self.CgppOffices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppGroups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="CgppOffices">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppPhonebook_CgppDivision">
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="0..1" />
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppDivision">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppPhonebook">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppPhonebook_CgppGroups">
+          <End Role="CgppGroups" Type="Self.CgppGroups" Multiplicity="0..1" />
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppGroups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="CgppPhonebook">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppPhonebook_CgppOffices">
+          <End Role="CgppOffices" Type="Self.CgppOffices" Multiplicity="0..1" />
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppPhonebook">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppPhonebook_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CgppPhonebook">
+              <PropertyRef Name="UsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConcernOffices_SMSFormats">
+          <End Role="SMSFormats" Type="Self.SMSFormats" Multiplicity="0..1" />
+          <End Role="ConcernOffices" Type="Self.ConcernOffices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SMSFormats">
+              <PropertyRef Name="formatID" />
+            </Principal>
+            <Dependent Role="ConcernOffices">
+              <PropertyRef Name="formatid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Division_Offices">
+          <End Role="CgppOffices" Type="Self.CgppOffices" Multiplicity="0..1" />
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppDivision">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormattedMessages_Classification">
+          <End Role="Classification" Type="Self.Classification" Multiplicity="0..1" />
+          <End Role="FormattedMessages" Type="Self.FormattedMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classification">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="FormattedMessages">
+              <PropertyRef Name="classid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormattedMessages_SMSFormats">
+          <End Role="SMSFormats" Type="Self.SMSFormats" Multiplicity="0..1" />
+          <End Role="FormattedMessages" Type="Self.FormattedMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SMSFormats">
+              <PropertyRef Name="formatID" />
+            </Principal>
+            <Dependent Role="FormattedMessages">
+              <PropertyRef Name="formatid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grouping_Groups">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="0..1" />
+          <End Role="Grouping_cellnumbers" Type="Self.Grouping_cellnumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Grouping_cellnumbers">
+              <PropertyRef Name="groupid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_CgppRole">
+          <End Role="CgppRole" Type="Self.CgppRole" Multiplicity="0..1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialsInformations_Municipality">
+          <End Role="Municipality" Type="Self.Municipality" Multiplicity="0..1" />
+          <End Role="OfficialsInformations" Type="Self.OfficialsInformations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipality">
+              <PropertyRef Name="munid" />
+            </Principal>
+            <Dependent Role="OfficialsInformations">
+              <PropertyRef Name="munid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialsInformations_OfficialsPosition">
+          <End Role="OfficialsPosition" Type="Self.OfficialsPosition" Multiplicity="0..1" />
+          <End Role="OfficialsInformations" Type="Self.OfficialsInformations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficialsPosition">
+              <PropertyRef Name="descid" />
+            </Principal>
+            <Dependent Role="OfficialsInformations">
+              <PropertyRef Name="OfficialDescID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialsInformations_PrefixMobileNumber">
+          <End Role="PrefixMobileNumber" Type="Self.PrefixMobileNumber" Multiplicity="0..1" />
+          <End Role="OfficialsInformations" Type="Self.OfficialsInformations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrefixMobileNumber">
+              <PropertyRef Name="netsmsID" />
+            </Principal>
+            <Dependent Role="OfficialsInformations">
+              <PropertyRef Name="networkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrefixMobileNumber_MobileNetProvider">
+          <End Role="MobileNetProvider" Type="Self.MobileNetProvider" Multiplicity="0..1" />
+          <End Role="PrefixMobileNumber" Type="Self.PrefixMobileNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MobileNetProvider">
+              <PropertyRef Name="netProviderID" />
+            </Principal>
+            <Dependent Role="PrefixMobileNumber">
+              <PropertyRef Name="networkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_CgppDivision">
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppDivision">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_CgppOffices">
+          <End Role="CgppOffices" Type="Self.CgppOffices" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ilsModelStoreContainer">
+          <EntitySet Name="Broadcasters" EntityType="Self.Broadcasters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CgppDivision" EntityType="Self.CgppDivision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CgppDraft" EntityType="Self.CgppDraft" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CgppGroups" EntityType="Self.CgppGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CgppOffices" EntityType="Self.CgppOffices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CgppPhonebook" EntityType="Self.CgppPhonebook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CgppRole" EntityType="Self.CgppRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classification" EntityType="Self.Classification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConcernOffices" EntityType="Self.ConcernOffices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Drafts" EntityType="Self.Drafts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntryLogs" EntityType="Self.EntryLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormattedMessages" EntityType="Self.FormattedMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grouping_cellnumbers" EntityType="Self.Grouping_cellnumbers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="m_tblSMS_SystemFormat" EntityType="Self.m_tblSMS_SystemFormat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MobileNetProvider" EntityType="Self.MobileNetProvider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipality" EntityType="Self.Municipality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfficialsInformations" EntityType="Self.OfficialsInformations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfficialsPosition" EntityType="Self.OfficialsPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phonebook" EntityType="Self.Phonebook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pilaKeyword" EntityType="Self.pilaKeyword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrefixMobileNumber" EntityType="Self.PrefixMobileNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rawMessage" EntityType="Self.rawMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SentItems" EntityType="Self.SentItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SimCardInfo" EntityType="Self.SimCardInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMSFormats" EntityType="Self.SMSFormats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmsPDU" EntityType="Self.SmsPDU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemUsers" EntityType="Self.SystemUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGender" EntityType="Self.tblGender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStuffNumbers" EntityType="Self.tblStuffNumbers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidentifiedNetwork" EntityType="Self.UnidentifiedNetwork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CgppDivision_CgppOffices" Association="Self.FK_CgppDivision_CgppOffices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="CgppDivision" EntitySet="CgppDivision" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_CgppDivision" Association="Self.FK_CgppDraft_CgppDivision">
+            <End Role="CgppDivision" EntitySet="CgppDivision" />
+            <End Role="CgppDraft" EntitySet="CgppDraft" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_CgppOffices" Association="Self.FK_CgppDraft_CgppOffices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="CgppDraft" EntitySet="CgppDraft" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_CgppPhonebook" Association="Self.FK_CgppDraft_CgppPhonebook">
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebook" />
+            <End Role="CgppDraft" EntitySet="CgppDraft" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_Drafts" Association="Self.FK_CgppDraft_Drafts">
+            <End Role="Drafts" EntitySet="Drafts" />
+            <End Role="CgppDraft" EntitySet="CgppDraft" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_User" Association="Self.FK_CgppDraft_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="CgppDraft" EntitySet="CgppDraft" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppOffices_CgppGroups" Association="Self.FK_CgppOffices_CgppGroups">
+            <End Role="CgppGroups" EntitySet="CgppGroups" />
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppPhonebook_CgppDivision" Association="Self.FK_CgppPhonebook_CgppDivision">
+            <End Role="CgppDivision" EntitySet="CgppDivision" />
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppPhonebook_CgppGroups" Association="Self.FK_CgppPhonebook_CgppGroups">
+            <End Role="CgppGroups" EntitySet="CgppGroups" />
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppPhonebook_CgppOffices" Association="Self.FK_CgppPhonebook_CgppOffices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppPhonebook_User" Association="Self.FK_CgppPhonebook_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConcernOffices_SMSFormats" Association="Self.FK_ConcernOffices_SMSFormats">
+            <End Role="SMSFormats" EntitySet="SMSFormats" />
+            <End Role="ConcernOffices" EntitySet="ConcernOffices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Division_Offices" Association="Self.FK_Division_Offices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="CgppDivision" EntitySet="CgppDivision" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormattedMessages_Classification" Association="Self.FK_FormattedMessages_Classification">
+            <End Role="Classification" EntitySet="Classification" />
+            <End Role="FormattedMessages" EntitySet="FormattedMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormattedMessages_SMSFormats" Association="Self.FK_FormattedMessages_SMSFormats">
+            <End Role="SMSFormats" EntitySet="SMSFormats" />
+            <End Role="FormattedMessages" EntitySet="FormattedMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grouping_Groups" Association="Self.FK_Grouping_Groups">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Grouping_cellnumbers" EntitySet="Grouping_cellnumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_CgppRole" Association="Self.FK_Login_CgppRole">
+            <End Role="CgppRole" EntitySet="CgppRole" />
+            <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialsInformations_Municipality" Association="Self.FK_OfficialsInformations_Municipality">
+            <End Role="Municipality" EntitySet="Municipality" />
+            <End Role="OfficialsInformations" EntitySet="OfficialsInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialsInformations_OfficialsPosition" Association="Self.FK_OfficialsInformations_OfficialsPosition">
+            <End Role="OfficialsPosition" EntitySet="OfficialsPosition" />
+            <End Role="OfficialsInformations" EntitySet="OfficialsInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialsInformations_PrefixMobileNumber" Association="Self.FK_OfficialsInformations_PrefixMobileNumber">
+            <End Role="PrefixMobileNumber" EntitySet="PrefixMobileNumber" />
+            <End Role="OfficialsInformations" EntitySet="OfficialsInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrefixMobileNumber_MobileNetProvider" Association="Self.FK_PrefixMobileNumber_MobileNetProvider">
+            <End Role="MobileNetProvider" EntitySet="MobileNetProvider" />
+            <End Role="PrefixMobileNumber" EntitySet="PrefixMobileNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_CgppDivision" Association="Self.FK_User_CgppDivision">
+            <End Role="CgppDivision" EntitySet="CgppDivision" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_CgppOffices" Association="Self.FK_User_CgppOffices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Login" Association="Self.FK_User_Login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ilsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Broadcaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tbl_id" Type="Int32" />
+          <Property Name="systemC" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CgppDivision">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeId" Type="Int32" />
+          <NavigationProperty Name="CgppOffice" Relationship="Self.FK_CgppDivision_CgppOffices" FromRole="CgppDivision" ToRole="CgppOffices" />
+          <NavigationProperty Name="CgppDrafts" Relationship="Self.FK_CgppDraft_CgppDivision" FromRole="CgppDivision" ToRole="CgppDraft" />
+          <NavigationProperty Name="CgppPhonebooks" Relationship="Self.FK_CgppPhonebook_CgppDivision" FromRole="CgppDivision" ToRole="CgppPhonebook" />
+          <NavigationProperty Name="CgppOffice1" Relationship="Self.FK_Division_Offices" FromRole="CgppDivision" ToRole="CgppOffices" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_CgppDivision" FromRole="CgppDivision" ToRole="User" />
+        </EntityType>
+        <EntityType Name="CgppDraft">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="DivisionId" Type="Int32" />
+          <Property Name="UsersId" Type="Int32" />
+          <Property Name="DraftsId" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="PhonebooksId" Type="Int32" />
+          <NavigationProperty Name="CgppDivision" Relationship="Self.FK_CgppDraft_CgppDivision" FromRole="CgppDraft" ToRole="CgppDivision" />
+          <NavigationProperty Name="CgppOffice" Relationship="Self.FK_CgppDraft_CgppOffices" FromRole="CgppDraft" ToRole="CgppOffices" />
+          <NavigationProperty Name="CgppPhonebook" Relationship="Self.FK_CgppDraft_CgppPhonebook" FromRole="CgppDraft" ToRole="CgppPhonebook" />
+          <NavigationProperty Name="Draft" Relationship="Self.FK_CgppDraft_Drafts" FromRole="CgppDraft" ToRole="Drafts" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CgppDraft_User" FromRole="CgppDraft" ToRole="User" />
+        </EntityType>
+        <EntityType Name="CgppGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CgppOffices" Relationship="Self.FK_CgppOffices_CgppGroups" FromRole="CgppGroups" ToRole="CgppOffices" />
+          <NavigationProperty Name="CgppPhonebooks" Relationship="Self.FK_CgppPhonebook_CgppGroups" FromRole="CgppGroups" ToRole="CgppPhonebook" />
+        </EntityType>
+        <EntityType Name="CgppOffice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupId" Type="Int32" />
+          <NavigationProperty Name="CgppDivisions" Relationship="Self.FK_CgppDivision_CgppOffices" FromRole="CgppOffices" ToRole="CgppDivision" />
+          <NavigationProperty Name="CgppDivisions1" Relationship="Self.FK_Division_Offices" FromRole="CgppOffices" ToRole="CgppDivision" />
+          <NavigationProperty Name="CgppDrafts" Relationship="Self.FK_CgppDraft_CgppOffices" FromRole="CgppOffices" ToRole="CgppDraft" />
+          <NavigationProperty Name="CgppGroup" Relationship="Self.FK_CgppOffices_CgppGroups" FromRole="CgppOffices" ToRole="CgppGroups" />
+          <NavigationProperty Name="CgppPhonebooks" Relationship="Self.FK_CgppPhonebook_CgppOffices" FromRole="CgppOffices" ToRole="CgppPhonebook" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_CgppOffices" FromRole="CgppOffices" ToRole="User" />
+        </EntityType>
+        <EntityType Name="CgppPhonebook">
+          <Key>
+            <PropertyRef Name="PhoneId" />
+          </Key>
+          <Property Name="PhoneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CellNum" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="CellphoneNum" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="DivisionId" Type="Int32" />
+          <Property Name="UsersId" Type="Int32" />
+          <Property Name="GroupId" Type="Int32" />
+          <NavigationProperty Name="CgppDivision" Relationship="Self.FK_CgppPhonebook_CgppDivision" FromRole="CgppPhonebook" ToRole="CgppDivision" />
+          <NavigationProperty Name="CgppDrafts" Relationship="Self.FK_CgppDraft_CgppPhonebook" FromRole="CgppPhonebook" ToRole="CgppDraft" />
+          <NavigationProperty Name="CgppGroup" Relationship="Self.FK_CgppPhonebook_CgppGroups" FromRole="CgppPhonebook" ToRole="CgppGroups" />
+          <NavigationProperty Name="CgppOffice" Relationship="Self.FK_CgppPhonebook_CgppOffices" FromRole="CgppPhonebook" ToRole="CgppOffices" />
+          <NavigationProperty Name="User" Relationship="Self.FK_CgppPhonebook_User" FromRole="CgppPhonebook" ToRole="User" />
+        </EntityType>
+        <EntityType Name="CgppRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Logins" Relationship="Self.FK_Login_CgppRole" FromRole="CgppRole" ToRole="Login" />
+        </EntityType>
+        <EntityType Name="Classification">
+          <Key>
+            <PropertyRef Name="classid" />
+          </Key>
+          <Property Name="classid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="classification1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isactive" Type="Int32" />
+          <NavigationProperty Name="FormattedMessages" Relationship="Self.FK_FormattedMessages_Classification" FromRole="Classification" ToRole="FormattedMessages" />
+        </EntityType>
+        <EntityType Name="ConcernOffice">
+          <Key>
+            <PropertyRef Name="concernid" />
+          </Key>
+          <Property Name="concernid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formatid" Type="Int32" />
+          <Property Name="officeid" Type="Int32" />
+          <Property Name="isactive" Type="Int32" />
+          <Property Name="isallAccess" Type="Int32" />
+          <NavigationProperty Name="SMSFormat" Relationship="Self.FK_ConcernOffices_SMSFormats" FromRole="ConcernOffices" ToRole="SMSFormats" />
+        </EntityType>
+        <EntityType Name="Draft">
+          <Key>
+            <PropertyRef Name="draftID" />
+          </Key>
+          <Property Name="draftID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sendto" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tag" Type="Int32" />
+          <NavigationProperty Name="CgppDrafts" Relationship="Self.FK_CgppDraft_Drafts" FromRole="Drafts" ToRole="CgppDraft" />
+        </EntityType>
+        <EntityType Name="EntryLog">
+          <Key>
+            <PropertyRef Name="logid" />
+          </Key>
+          <Property Name="logid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eid" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FormattedMessage">
+          <Key>
+            <PropertyRef Name="smsid" />
+          </Key>
+          <Property Name="smsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formatid" Type="Int32" />
+          <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sender" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="receiver" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="isactive" Type="Int32" />
+          <Property Name="date_received" Type="DateTime" Precision="3" />
+          <Property Name="unread" Type="Int32" />
+          <Property Name="action" Type="Int32" />
+          <Property Name="broadcast" Type="Int32" />
+          <Property Name="classid" Type="Int32" />
+          <Property Name="officeid" Type="Int32" />
+          <NavigationProperty Name="Classification" Relationship="Self.FK_FormattedMessages_Classification" FromRole="FormattedMessages" ToRole="Classification" />
+          <NavigationProperty Name="SMSFormat" Relationship="Self.FK_FormattedMessages_SMSFormats" FromRole="FormattedMessages" ToRole="SMSFormats" />
+        </EntityType>
+        <EntityType Name="Grouping_cellnumbers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="groupid" Type="Int32" />
+          <Property Name="pk" Type="Int32" Nullable="false" />
+          <Property Name="systemC" Type="Int32" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Grouping_Groups" FromRole="Grouping_cellnumbers" ToRole="Groups" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="keyword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="subgroup" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isactive" Type="Int32" />
+          <Property Name="isdeletable" Type="Int32" />
+          <NavigationProperty Name="Grouping_cellnumbers" Relationship="Self.FK_Grouping_Groups" FromRole="Groups" ToRole="Grouping_cellnumbers" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="LoginID" />
+          </Key>
+          <Property Name="LoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Isdeleted" Type="Boolean" />
+          <Property Name="CreateOn" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CgppRole" Relationship="Self.FK_Login_CgppRole" FromRole="Login" ToRole="CgppRole" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Login" FromRole="Login" ToRole="User" />
+        </EntityType>
+        <EntityType Name="m_tblSMS_SystemFormat">
+          <Key>
+            <PropertyRef Name="codeId" />
+          </Key>
+          <Property Name="codeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sms_format" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="sms_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="stored_proc_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="stored_proc_param_format" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="is_with_return" Type="Int32" />
+          <Property Name="separator" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="is_active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="Int32" Nullable="false" />
+          <Property Name="Sid" Type="Int32" />
+          <Property Name="sort" Type="Int32" />
+          <Property Name="menuname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="action" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="controller" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="icon" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MobileNetProvider">
+          <Key>
+            <PropertyRef Name="netProviderID" />
+          </Key>
+          <Property Name="netProviderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="networkname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PrefixMobileNumbers" Relationship="Self.FK_PrefixMobileNumber_MobileNetProvider" FromRole="MobileNetProvider" ToRole="PrefixMobileNumber" />
+        </EntityType>
+        <EntityType Name="Municipality">
+          <Key>
+            <PropertyRef Name="munid" />
+          </Key>
+          <Property Name="munid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Municipalityname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="district" Type="Int32" />
+          <NavigationProperty Name="OfficialsInformations" Relationship="Self.FK_OfficialsInformations_Municipality" FromRole="Municipality" ToRole="OfficialsInformations" />
+        </EntityType>
+        <EntityType Name="OfficialsInformation">
+          <Key>
+            <PropertyRef Name="offid" />
+          </Key>
+          <Property Name="offid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="mname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="district" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="cellno" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="networkID" Type="Int32" />
+          <Property Name="OfficialDescID" Type="Int32" />
+          <Property Name="munid" Type="Int32" />
+          <Property Name="suffix" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="bday" Type="DateTime" Precision="0" />
+          <Property Name="mynumbers" Type="Int32" />
+          <Property Name="gender" Type="Int32" />
+          <NavigationProperty Name="Municipality" Relationship="Self.FK_OfficialsInformations_Municipality" FromRole="OfficialsInformations" ToRole="Municipality" />
+          <NavigationProperty Name="OfficialsPosition" Relationship="Self.FK_OfficialsInformations_OfficialsPosition" FromRole="OfficialsInformations" ToRole="OfficialsPosition" />
+          <NavigationProperty Name="PrefixMobileNumber" Relationship="Self.FK_OfficialsInformations_PrefixMobileNumber" FromRole="OfficialsInformations" ToRole="PrefixMobileNumber" />
+        </EntityType>
+        <EntityType Name="OfficialsPosition">
+          <Key>
+            <PropertyRef Name="descid" />
+          </Key>
+          <Property Name="descid" Type="Int32" Nullable="false" />
+          <Property Name="keword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OfficialsInformations" Relationship="Self.FK_OfficialsInformations_OfficialsPosition" FromRole="OfficialsPosition" ToRole="OfficialsInformations" />
+        </EntityType>
+        <EntityType Name="Phonebook">
+          <Key>
+            <PropertyRef Name="phoneid" />
+          </Key>
+          <Property Name="phoneid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cnum" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="owner_fname" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="owner_lname" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="Int32" />
+          <Property Name="bday" Type="DateTime" Precision="0" />
+          <Property Name="owner_mname" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="suffix" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="officeid" Type="Int32" />
+          <Property Name="eid" Type="Int32" />
+          <Property Name="isactive" Type="Int32" />
+        </EntityType>
+        <EntityType Name="pilaKeyword">
+          <Key>
+            <PropertyRef Name="pilaid" />
+          </Key>
+          <Property Name="pilaid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prodcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="isactive" Type="Int32" />
+          <Property Name="dateEntered" Type="DateTime" Precision="3" />
+          <Property Name="eid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PrefixMobileNumber">
+          <Key>
+            <PropertyRef Name="netsmsID" />
+          </Key>
+          <Property Name="netsmsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prefix" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="networkID" Type="Int32" />
+          <NavigationProperty Name="MobileNetProvider" Relationship="Self.FK_PrefixMobileNumber_MobileNetProvider" FromRole="PrefixMobileNumber" ToRole="MobileNetProvider" />
+          <NavigationProperty Name="OfficialsInformations" Relationship="Self.FK_OfficialsInformations_PrefixMobileNumber" FromRole="PrefixMobileNumber" ToRole="OfficialsInformations" />
+        </EntityType>
+        <EntityType Name="rawMessage">
+          <Key>
+            <PropertyRef Name="smsid" />
+          </Key>
+          <Property Name="smsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sender" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IMSI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="networkID" Type="Int32" />
+          <Property Name="receiver" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="date_received" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SentItem">
+          <Key>
+            <PropertyRef Name="SentItemsID" />
+          </Key>
+          <Property Name="SentItemsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Destination" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eid" Type="Int32" />
+          <Property Name="DateSent" Type="DateTime" Precision="3" />
+          <Property Name="Systemname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SimCardInfo">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IMSI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ownNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="networkID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SMSFormat">
+          <Key>
+            <PropertyRef Name="formatID" />
+          </Key>
+          <Property Name="formatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="keyword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="reply" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="smsformat1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Isdisplay" Type="Int32" />
+          <Property Name="autoExec" Type="Int32" />
+          <Property Name="isactive" Type="Int32" />
+          <NavigationProperty Name="ConcernOffices" Relationship="Self.FK_ConcernOffices_SMSFormats" FromRole="SMSFormats" ToRole="ConcernOffices" />
+          <NavigationProperty Name="FormattedMessages" Relationship="Self.FK_FormattedMessages_SMSFormats" FromRole="SMSFormats" ToRole="FormattedMessages" />
+        </EntityType>
+        <EntityType Name="SmsPDU">
+          <Key>
+            <PropertyRef Name="conid" />
+          </Key>
+          <Property Name="conid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SmsPdu1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="octet" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="currentNumber" Type="Int32" />
+          <Property Name="TotalMessages" Type="Int32" />
+          <Property Name="ReferenceNumber" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usrname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblGender">
+          <Key>
+            <PropertyRef Name="gid" />
+          </Key>
+          <Property Name="gid" Type="Int32" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblStuffNumber">
+          <Key>
+            <PropertyRef Name="xid" />
+          </Key>
+          <Property Name="xid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cnums" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="msg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tag" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UnidentifiedNetwork">
+          <Key>
+            <PropertyRef Name="unidentifiedNoID" />
+          </Key>
+          <Property Name="unidentifiedNoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cnum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="prefix" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DistrictID" Type="Int32" />
+          <Property Name="OfficeID" Type="Int32" />
+          <Property Name="DivisionID" Type="Int32" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CgppDivision" Relationship="Self.FK_User_CgppDivision" FromRole="User" ToRole="CgppDivision" />
+          <NavigationProperty Name="CgppDrafts" Relationship="Self.FK_CgppDraft_User" FromRole="User" ToRole="CgppDraft" />
+          <NavigationProperty Name="CgppOffice" Relationship="Self.FK_User_CgppOffices" FromRole="User" ToRole="CgppOffices" />
+          <NavigationProperty Name="CgppPhonebooks" Relationship="Self.FK_CgppPhonebook_User" FromRole="User" ToRole="CgppPhonebook" />
+          <NavigationProperty Name="Login" Relationship="Self.FK_User_Login" FromRole="User" ToRole="Login" />
+        </EntityType>
+        <Association Name="FK_CgppDivision_CgppOffices">
+          <End Role="CgppOffices" Type="Self.CgppOffice" Multiplicity="0..1" />
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppDivision">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_CgppDivision">
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppDivision">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppPhonebook_CgppDivision">
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="0..1" />
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppDivision">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppPhonebook">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Division_Offices">
+          <End Role="CgppOffices" Type="Self.CgppOffice" Multiplicity="0..1" />
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppDivision">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_CgppDivision">
+          <End Role="CgppDivision" Type="Self.CgppDivision" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppDivision">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_CgppOffices">
+          <End Role="CgppOffices" Type="Self.CgppOffice" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_CgppPhonebook">
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppPhonebook">
+              <PropertyRef Name="PhoneId" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="PhonebooksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_Drafts">
+          <End Role="Drafts" Type="Self.Draft" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drafts">
+              <PropertyRef Name="draftID" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="DraftsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppDraft_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="CgppDraft" Type="Self.CgppDraft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CgppDraft">
+              <PropertyRef Name="UsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppOffices_CgppGroups">
+          <End Role="CgppGroups" Type="Self.CgppGroup" Multiplicity="0..1" />
+          <End Role="CgppOffices" Type="Self.CgppOffice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppGroups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="CgppOffices">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppPhonebook_CgppGroups">
+          <End Role="CgppGroups" Type="Self.CgppGroup" Multiplicity="0..1" />
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppGroups">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="CgppPhonebook">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppPhonebook_CgppOffices">
+          <End Role="CgppOffices" Type="Self.CgppOffice" Multiplicity="0..1" />
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CgppPhonebook">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_CgppOffices">
+          <End Role="CgppOffices" Type="Self.CgppOffice" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppOffices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CgppPhonebook_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="CgppPhonebook" Type="Self.CgppPhonebook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CgppPhonebook">
+              <PropertyRef Name="UsersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_CgppRole">
+          <End Role="CgppRole" Type="Self.CgppRole" Multiplicity="0..1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CgppRole">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormattedMessages_Classification">
+          <End Role="Classification" Type="Self.Classification" Multiplicity="0..1" />
+          <End Role="FormattedMessages" Type="Self.FormattedMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classification">
+              <PropertyRef Name="classid" />
+            </Principal>
+            <Dependent Role="FormattedMessages">
+              <PropertyRef Name="classid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConcernOffices_SMSFormats">
+          <End Role="SMSFormats" Type="Self.SMSFormat" Multiplicity="0..1" />
+          <End Role="ConcernOffices" Type="Self.ConcernOffice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SMSFormats">
+              <PropertyRef Name="formatID" />
+            </Principal>
+            <Dependent Role="ConcernOffices">
+              <PropertyRef Name="formatid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormattedMessages_SMSFormats">
+          <End Role="SMSFormats" Type="Self.SMSFormat" Multiplicity="0..1" />
+          <End Role="FormattedMessages" Type="Self.FormattedMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SMSFormats">
+              <PropertyRef Name="formatID" />
+            </Principal>
+            <Dependent Role="FormattedMessages">
+              <PropertyRef Name="formatid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grouping_Groups">
+          <End Role="Groups" Type="Self.Group" Multiplicity="0..1" />
+          <End Role="Grouping_cellnumbers" Type="Self.Grouping_cellnumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Grouping_cellnumbers">
+              <PropertyRef Name="groupid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Login">
+          <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="LoginID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="LoginID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrefixMobileNumber_MobileNetProvider">
+          <End Role="MobileNetProvider" Type="Self.MobileNetProvider" Multiplicity="0..1" />
+          <End Role="PrefixMobileNumber" Type="Self.PrefixMobileNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MobileNetProvider">
+              <PropertyRef Name="netProviderID" />
+            </Principal>
+            <Dependent Role="PrefixMobileNumber">
+              <PropertyRef Name="networkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialsInformations_Municipality">
+          <End Role="Municipality" Type="Self.Municipality" Multiplicity="0..1" />
+          <End Role="OfficialsInformations" Type="Self.OfficialsInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Municipality">
+              <PropertyRef Name="munid" />
+            </Principal>
+            <Dependent Role="OfficialsInformations">
+              <PropertyRef Name="munid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialsInformations_OfficialsPosition">
+          <End Role="OfficialsPosition" Type="Self.OfficialsPosition" Multiplicity="0..1" />
+          <End Role="OfficialsInformations" Type="Self.OfficialsInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficialsPosition">
+              <PropertyRef Name="descid" />
+            </Principal>
+            <Dependent Role="OfficialsInformations">
+              <PropertyRef Name="OfficialDescID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficialsInformations_PrefixMobileNumber">
+          <End Role="PrefixMobileNumber" Type="Self.PrefixMobileNumber" Multiplicity="0..1" />
+          <End Role="OfficialsInformations" Type="Self.OfficialsInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrefixMobileNumber">
+              <PropertyRef Name="netsmsID" />
+            </Principal>
+            <Dependent Role="OfficialsInformations">
+              <PropertyRef Name="networkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ilsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Broadcasters" EntityType="Self.Broadcaster" />
+          <EntitySet Name="CgppDivisions" EntityType="Self.CgppDivision" />
+          <EntitySet Name="CgppDrafts" EntityType="Self.CgppDraft" />
+          <EntitySet Name="CgppGroups" EntityType="Self.CgppGroup" />
+          <EntitySet Name="CgppOffices" EntityType="Self.CgppOffice" />
+          <EntitySet Name="CgppPhonebooks" EntityType="Self.CgppPhonebook" />
+          <EntitySet Name="CgppRoles" EntityType="Self.CgppRole" />
+          <EntitySet Name="Classifications" EntityType="Self.Classification" />
+          <EntitySet Name="ConcernOffices" EntityType="Self.ConcernOffice" />
+          <EntitySet Name="Drafts" EntityType="Self.Draft" />
+          <EntitySet Name="EntryLogs" EntityType="Self.EntryLog" />
+          <EntitySet Name="FormattedMessages" EntityType="Self.FormattedMessage" />
+          <EntitySet Name="Grouping_cellnumbers" EntityType="Self.Grouping_cellnumbers" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="m_tblSMS_SystemFormat" EntityType="Self.m_tblSMS_SystemFormat" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="MobileNetProviders" EntityType="Self.MobileNetProvider" />
+          <EntitySet Name="Municipalities" EntityType="Self.Municipality" />
+          <EntitySet Name="OfficialsInformations" EntityType="Self.OfficialsInformation" />
+          <EntitySet Name="OfficialsPositions" EntityType="Self.OfficialsPosition" />
+          <EntitySet Name="Phonebooks" EntityType="Self.Phonebook" />
+          <EntitySet Name="pilaKeywords" EntityType="Self.pilaKeyword" />
+          <EntitySet Name="PrefixMobileNumbers" EntityType="Self.PrefixMobileNumber" />
+          <EntitySet Name="rawMessages" EntityType="Self.rawMessage" />
+          <EntitySet Name="SentItems" EntityType="Self.SentItem" />
+          <EntitySet Name="SimCardInfoes" EntityType="Self.SimCardInfo" />
+          <EntitySet Name="SMSFormats" EntityType="Self.SMSFormat" />
+          <EntitySet Name="SmsPDUs" EntityType="Self.SmsPDU" />
+          <EntitySet Name="SystemUsers" EntityType="Self.SystemUser" />
+          <EntitySet Name="tblGenders" EntityType="Self.tblGender" />
+          <EntitySet Name="tblStuffNumbers" EntityType="Self.tblStuffNumber" />
+          <EntitySet Name="UnidentifiedNetworks" EntityType="Self.UnidentifiedNetwork" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_CgppDivision_CgppOffices" Association="Self.FK_CgppDivision_CgppOffices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="CgppDivision" EntitySet="CgppDivisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_CgppDivision" Association="Self.FK_CgppDraft_CgppDivision">
+            <End Role="CgppDivision" EntitySet="CgppDivisions" />
+            <End Role="CgppDraft" EntitySet="CgppDrafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppPhonebook_CgppDivision" Association="Self.FK_CgppPhonebook_CgppDivision">
+            <End Role="CgppDivision" EntitySet="CgppDivisions" />
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Division_Offices" Association="Self.FK_Division_Offices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="CgppDivision" EntitySet="CgppDivisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_CgppDivision" Association="Self.FK_User_CgppDivision">
+            <End Role="CgppDivision" EntitySet="CgppDivisions" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_CgppOffices" Association="Self.FK_CgppDraft_CgppOffices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="CgppDraft" EntitySet="CgppDrafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_CgppPhonebook" Association="Self.FK_CgppDraft_CgppPhonebook">
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebooks" />
+            <End Role="CgppDraft" EntitySet="CgppDrafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_Drafts" Association="Self.FK_CgppDraft_Drafts">
+            <End Role="Drafts" EntitySet="Drafts" />
+            <End Role="CgppDraft" EntitySet="CgppDrafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppDraft_User" Association="Self.FK_CgppDraft_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CgppDraft" EntitySet="CgppDrafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppOffices_CgppGroups" Association="Self.FK_CgppOffices_CgppGroups">
+            <End Role="CgppGroups" EntitySet="CgppGroups" />
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppPhonebook_CgppGroups" Association="Self.FK_CgppPhonebook_CgppGroups">
+            <End Role="CgppGroups" EntitySet="CgppGroups" />
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppPhonebook_CgppOffices" Association="Self.FK_CgppPhonebook_CgppOffices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_CgppOffices" Association="Self.FK_User_CgppOffices">
+            <End Role="CgppOffices" EntitySet="CgppOffices" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CgppPhonebook_User" Association="Self.FK_CgppPhonebook_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CgppPhonebook" EntitySet="CgppPhonebooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_CgppRole" Association="Self.FK_Login_CgppRole">
+            <End Role="CgppRole" EntitySet="CgppRoles" />
+            <End Role="Login" EntitySet="Logins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormattedMessages_Classification" Association="Self.FK_FormattedMessages_Classification">
+            <End Role="Classification" EntitySet="Classifications" />
+            <End Role="FormattedMessages" EntitySet="FormattedMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConcernOffices_SMSFormats" Association="Self.FK_ConcernOffices_SMSFormats">
+            <End Role="SMSFormats" EntitySet="SMSFormats" />
+            <End Role="ConcernOffices" EntitySet="ConcernOffices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormattedMessages_SMSFormats" Association="Self.FK_FormattedMessages_SMSFormats">
+            <End Role="SMSFormats" EntitySet="SMSFormats" />
+            <End Role="FormattedMessages" EntitySet="FormattedMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grouping_Groups" Association="Self.FK_Grouping_Groups">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Grouping_cellnumbers" EntitySet="Grouping_cellnumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Login" Association="Self.FK_User_Login">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrefixMobileNumber_MobileNetProvider" Association="Self.FK_PrefixMobileNumber_MobileNetProvider">
+            <End Role="MobileNetProvider" EntitySet="MobileNetProviders" />
+            <End Role="PrefixMobileNumber" EntitySet="PrefixMobileNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialsInformations_Municipality" Association="Self.FK_OfficialsInformations_Municipality">
+            <End Role="Municipality" EntitySet="Municipalities" />
+            <End Role="OfficialsInformations" EntitySet="OfficialsInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialsInformations_OfficialsPosition" Association="Self.FK_OfficialsInformations_OfficialsPosition">
+            <End Role="OfficialsPosition" EntitySet="OfficialsPositions" />
+            <End Role="OfficialsInformations" EntitySet="OfficialsInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficialsInformations_PrefixMobileNumber" Association="Self.FK_OfficialsInformations_PrefixMobileNumber">
+            <End Role="PrefixMobileNumber" EntitySet="PrefixMobileNumbers" />
+            <End Role="OfficialsInformations" EntitySet="OfficialsInformations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ilsModelStoreContainer" CdmEntityContainer="ilsEntities">
+          <EntitySetMapping Name="Broadcasters">
+            <EntityTypeMapping TypeName="ilsModel.Broadcaster">
+              <MappingFragment StoreEntitySet="Broadcasters">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tbl_id" ColumnName="tbl_id" />
+                <ScalarProperty Name="systemC" ColumnName="systemC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CgppDivisions">
+            <EntityTypeMapping TypeName="ilsModel.CgppDivision">
+              <MappingFragment StoreEntitySet="CgppDivision">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CgppDrafts">
+            <EntityTypeMapping TypeName="ilsModel.CgppDraft">
+              <MappingFragment StoreEntitySet="CgppDraft">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+                <ScalarProperty Name="DraftsId" ColumnName="DraftsId" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="PhonebooksId" ColumnName="PhonebooksId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CgppGroups">
+            <EntityTypeMapping TypeName="ilsModel.CgppGroup">
+              <MappingFragment StoreEntitySet="CgppGroups">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CgppOffices">
+            <EntityTypeMapping TypeName="ilsModel.CgppOffice">
+              <MappingFragment StoreEntitySet="CgppOffices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CgppPhonebooks">
+            <EntityTypeMapping TypeName="ilsModel.CgppPhonebook">
+              <MappingFragment StoreEntitySet="CgppPhonebook">
+                <ScalarProperty Name="PhoneId" ColumnName="PhoneId" />
+                <ScalarProperty Name="CellNum" ColumnName="CellNum" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="CellphoneNum" ColumnName="CellphoneNum" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="UsersId" ColumnName="UsersId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CgppRoles">
+            <EntityTypeMapping TypeName="ilsModel.CgppRole">
+              <MappingFragment StoreEntitySet="CgppRole">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classifications">
+            <EntityTypeMapping TypeName="ilsModel.Classification">
+              <MappingFragment StoreEntitySet="Classification">
+                <ScalarProperty Name="classid" ColumnName="classid" />
+                <ScalarProperty Name="classification1" ColumnName="classification" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConcernOffices">
+            <EntityTypeMapping TypeName="ilsModel.ConcernOffice">
+              <MappingFragment StoreEntitySet="ConcernOffices">
+                <ScalarProperty Name="concernid" ColumnName="concernid" />
+                <ScalarProperty Name="formatid" ColumnName="formatid" />
+                <ScalarProperty Name="officeid" ColumnName="officeid" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="isallAccess" ColumnName="isallAccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drafts">
+            <EntityTypeMapping TypeName="ilsModel.Draft">
+              <MappingFragment StoreEntitySet="Drafts">
+                <ScalarProperty Name="draftID" ColumnName="draftID" />
+                <ScalarProperty Name="Sendto" ColumnName="Sendto" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntryLogs">
+            <EntityTypeMapping TypeName="ilsModel.EntryLog">
+              <MappingFragment StoreEntitySet="EntryLogs">
+                <ScalarProperty Name="logid" ColumnName="logid" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormattedMessages">
+            <EntityTypeMapping TypeName="ilsModel.FormattedMessage">
+              <MappingFragment StoreEntitySet="FormattedMessages">
+                <ScalarProperty Name="smsid" ColumnName="smsid" />
+                <ScalarProperty Name="formatid" ColumnName="formatid" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="date_received" ColumnName="date_received" />
+                <ScalarProperty Name="unread" ColumnName="unread" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="broadcast" ColumnName="broadcast" />
+                <ScalarProperty Name="classid" ColumnName="classid" />
+                <ScalarProperty Name="officeid" ColumnName="officeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grouping_cellnumbers">
+            <EntityTypeMapping TypeName="ilsModel.Grouping_cellnumbers">
+              <MappingFragment StoreEntitySet="Grouping_cellnumbers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="groupid" ColumnName="groupid" />
+                <ScalarProperty Name="pk" ColumnName="pk" />
+                <ScalarProperty Name="systemC" ColumnName="systemC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="ilsModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="keyword" ColumnName="keyword" />
+                <ScalarProperty Name="subgroup" ColumnName="subgroup" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="isdeletable" ColumnName="isdeletable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="ilsModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Isdeleted" ColumnName="Isdeleted" />
+                <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="m_tblSMS_SystemFormat">
+            <EntityTypeMapping TypeName="ilsModel.m_tblSMS_SystemFormat">
+              <MappingFragment StoreEntitySet="m_tblSMS_SystemFormat">
+                <ScalarProperty Name="codeId" ColumnName="codeId" />
+                <ScalarProperty Name="sms_format" ColumnName="sms_format" />
+                <ScalarProperty Name="sms_description" ColumnName="sms_description" />
+                <ScalarProperty Name="stored_proc_name" ColumnName="stored_proc_name" />
+                <ScalarProperty Name="stored_proc_param_format" ColumnName="stored_proc_param_format" />
+                <ScalarProperty Name="is_with_return" ColumnName="is_with_return" />
+                <ScalarProperty Name="separator" ColumnName="separator" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="ilsModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Sid" ColumnName="Sid" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="menuname" ColumnName="menuname" />
+                <ScalarProperty Name="action" ColumnName="action" />
+                <ScalarProperty Name="controller" ColumnName="controller" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MobileNetProviders">
+            <EntityTypeMapping TypeName="ilsModel.MobileNetProvider">
+              <MappingFragment StoreEntitySet="MobileNetProvider">
+                <ScalarProperty Name="netProviderID" ColumnName="netProviderID" />
+                <ScalarProperty Name="networkname" ColumnName="networkname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipalities">
+            <EntityTypeMapping TypeName="ilsModel.Municipality">
+              <MappingFragment StoreEntitySet="Municipality">
+                <ScalarProperty Name="munid" ColumnName="munid" />
+                <ScalarProperty Name="Municipalityname" ColumnName="Municipalityname" />
+                <ScalarProperty Name="district" ColumnName="district" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficialsInformations">
+            <EntityTypeMapping TypeName="ilsModel.OfficialsInformation">
+              <MappingFragment StoreEntitySet="OfficialsInformations">
+                <ScalarProperty Name="offid" ColumnName="offid" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="cellno" ColumnName="cellno" />
+                <ScalarProperty Name="networkID" ColumnName="networkID" />
+                <ScalarProperty Name="OfficialDescID" ColumnName="OfficialDescID" />
+                <ScalarProperty Name="munid" ColumnName="munid" />
+                <ScalarProperty Name="suffix" ColumnName="suffix" />
+                <ScalarProperty Name="bday" ColumnName="bday" />
+                <ScalarProperty Name="mynumbers" ColumnName="mynumbers" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficialsPositions">
+            <EntityTypeMapping TypeName="ilsModel.OfficialsPosition">
+              <MappingFragment StoreEntitySet="OfficialsPosition">
+                <ScalarProperty Name="descid" ColumnName="descid" />
+                <ScalarProperty Name="keword" ColumnName="keword" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phonebooks">
+            <EntityTypeMapping TypeName="ilsModel.Phonebook">
+              <MappingFragment StoreEntitySet="Phonebook">
+                <ScalarProperty Name="phoneid" ColumnName="phoneid" />
+                <ScalarProperty Name="cnum" ColumnName="cnum" />
+                <ScalarProperty Name="owner_fname" ColumnName="owner_fname" />
+                <ScalarProperty Name="owner_lname" ColumnName="owner_lname" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="bday" ColumnName="bday" />
+                <ScalarProperty Name="owner_mname" ColumnName="owner_mname" />
+                <ScalarProperty Name="suffix" ColumnName="suffix" />
+                <ScalarProperty Name="officeid" ColumnName="officeid" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pilaKeywords">
+            <EntityTypeMapping TypeName="ilsModel.pilaKeyword">
+              <MappingFragment StoreEntitySet="pilaKeyword">
+                <ScalarProperty Name="pilaid" ColumnName="pilaid" />
+                <ScalarProperty Name="prodcode" ColumnName="prodcode" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="dateEntered" ColumnName="dateEntered" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrefixMobileNumbers">
+            <EntityTypeMapping TypeName="ilsModel.PrefixMobileNumber">
+              <MappingFragment StoreEntitySet="PrefixMobileNumber">
+                <ScalarProperty Name="netsmsID" ColumnName="netsmsID" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="networkID" ColumnName="networkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rawMessages">
+            <EntityTypeMapping TypeName="ilsModel.rawMessage">
+              <MappingFragment StoreEntitySet="rawMessage">
+                <ScalarProperty Name="smsid" ColumnName="smsid" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="IMSI" ColumnName="IMSI" />
+                <ScalarProperty Name="networkID" ColumnName="networkID" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="date_received" ColumnName="date_received" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SentItems">
+            <EntityTypeMapping TypeName="ilsModel.SentItem">
+              <MappingFragment StoreEntitySet="SentItems">
+                <ScalarProperty Name="SentItemsID" ColumnName="SentItemsID" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+                <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+                <ScalarProperty Name="Systemname" ColumnName="Systemname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SimCardInfoes">
+            <EntityTypeMapping TypeName="ilsModel.SimCardInfo">
+              <MappingFragment StoreEntitySet="SimCardInfo">
+                <ScalarProperty Name="rid" ColumnName="rid" />
+                <ScalarProperty Name="IMSI" ColumnName="IMSI" />
+                <ScalarProperty Name="ownNumber" ColumnName="ownNumber" />
+                <ScalarProperty Name="networkID" ColumnName="networkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMSFormats">
+            <EntityTypeMapping TypeName="ilsModel.SMSFormat">
+              <MappingFragment StoreEntitySet="SMSFormats">
+                <ScalarProperty Name="formatID" ColumnName="formatID" />
+                <ScalarProperty Name="keyword" ColumnName="keyword" />
+                <ScalarProperty Name="reply" ColumnName="reply" />
+                <ScalarProperty Name="smsformat1" ColumnName="smsformat" />
+                <ScalarProperty Name="Isdisplay" ColumnName="Isdisplay" />
+                <ScalarProperty Name="autoExec" ColumnName="autoExec" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmsPDUs">
+            <EntityTypeMapping TypeName="ilsModel.SmsPDU">
+              <MappingFragment StoreEntitySet="SmsPDU">
+                <ScalarProperty Name="conid" ColumnName="conid" />
+                <ScalarProperty Name="SmsPdu1" ColumnName="SmsPdu" />
+                <ScalarProperty Name="octet" ColumnName="octet" />
+                <ScalarProperty Name="currentNumber" ColumnName="currentNumber" />
+                <ScalarProperty Name="TotalMessages" ColumnName="TotalMessages" />
+                <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUsers">
+            <EntityTypeMapping TypeName="ilsModel.SystemUser">
+              <MappingFragment StoreEntitySet="SystemUsers">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="pword" ColumnName="pword" />
+                <ScalarProperty Name="usrname" ColumnName="usrname" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGenders">
+            <EntityTypeMapping TypeName="ilsModel.tblGender">
+              <MappingFragment StoreEntitySet="tblGender">
+                <ScalarProperty Name="gid" ColumnName="gid" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStuffNumbers">
+            <EntityTypeMapping TypeName="ilsModel.tblStuffNumber">
+              <MappingFragment StoreEntitySet="tblStuffNumbers">
+                <ScalarProperty Name="xid" ColumnName="xid" />
+                <ScalarProperty Name="cnums" ColumnName="cnums" />
+                <ScalarProperty Name="msg" ColumnName="msg" />
+                <ScalarProperty Name="tag" ColumnName="tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidentifiedNetworks">
+            <EntityTypeMapping TypeName="ilsModel.UnidentifiedNetwork">
+              <MappingFragment StoreEntitySet="UnidentifiedNetwork">
+                <ScalarProperty Name="unidentifiedNoID" ColumnName="unidentifiedNoID" />
+                <ScalarProperty Name="cnum" ColumnName="cnum" />
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ilsModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

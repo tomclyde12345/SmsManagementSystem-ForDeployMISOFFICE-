@@ -1,0 +1,22 @@
+﻿
+
+@foreach (var adminname in Model)
+{
+
+    if (adminname.FilePath == null)
+    {
+        <img src="~/Images/city-hall.png" style="width:120px;height:120px;border-radius:100%;" />
+    }
+    else
+    {
+        <img src="@adminname.FilePath" style="width:120px;height:120px;border-radius:100%;" />
+    }
+
+    <p style="display:block; color:white;font-size:13px;">
+
+        @adminname.Name
+        <br />
+        ADMINISTRATOR
+    </p>
+
+}

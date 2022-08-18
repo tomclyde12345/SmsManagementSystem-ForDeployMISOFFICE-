@@ -1,0 +1,58 @@
+﻿@model SmsManagementSystem.Models.CgppDivision
+@{
+    ViewBag.Title = "Create Division Sms Management System";
+    Layout = (int)Session["Role_Id"] == 1 ? "~/Views/Shared/_LayoutAdmin.cshtml" : "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@Styles.Render("~/Content/css5")
+@Scripts.Render("~/bundles/modernizr")
+@*<h2>@((int)Session["Role_Id"] == 1 ? "Admin" : "User")</h2>*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h3 class="title1">Delete Division</h3>
+    <div class="form-grids row widget-shadow" data-example-id="basic-forms">
+        <div class="form-title">
+            <h4 style="color: #6F6F6F;">Delete Division Form :</h4>
+        </div>
+        <div class="form-body"  data-example-id="simple-form-inline">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Division Name <label class="fa fa-building-o" style="color:black"> </label></label>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "col-md-12", required = "required", style = "height:36px;" } })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Office Name <label class="fa fa-building" style="color:black"> </label></label>
+                    @Html.EditorFor(model => model.CgppOffice.Name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                </div>
+                <div class="text-center">
+                    <input type="submit" value="DELETE" class="btn btn-default" style="width: 120px; color:white; margin:auto; background-color: rgba(97, 100, 193, 0.85); height: 50px; border-radius: 20px; font-weight: 800;" />
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+@section scripts{
+
+    <script type="text/javascript">
+
+
+
+
+
+    </script>
+}
+
+
+
+

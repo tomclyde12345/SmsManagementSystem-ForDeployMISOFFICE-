@@ -1,0 +1,328 @@
+﻿
+@{
+    ViewBag.Title = "Display Draft Message Sms Management System";
+    Layout = (int)Session["Role_Id"] == 1 ? "~/Views/Shared/_LayoutAdmin.cshtml" : "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@*<h2>@((int)Session["Role_Id"] == 1 ? "Admin" : "User")</h2>*@
+@{
+    ViewBag.Title = "Draft List";
+}
+<style>
+    body {
+        background-color: #242529 !important;
+    }
+    #searchTable tr {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        background-color: #EAEAEA;
+        padding: 10px;
+    }
+    #searchTable2 tr {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        background-color: #EAEAEA;
+        padding: 10px;
+    }
+    #draftlisttable_length.dataTables_length {
+        color: red;
+    }
+    #draftlisttable2_length.dataTables_length {
+        color: red;
+    }
+    table.dataTable tbody td, table.dataTable tbody th{
+        border-bottom: 1px solid black;
+
+        
+    }
+    #draftlisttable_info.dataTables_info{
+        color:red;
+    }
+
+    #draftlisttable2_info.dataTables_info {
+        color: red;
+    }
+    th.sorting {
+        background-color: rgb(234, 234, 234);
+        color: rgb(111, 111, 111);
+    }
+</style>
+
+<span style="display:none;" id="Message" class="d-none">@TempData["Message"]</span>
+<body>
+    <h2 style="color: black; font-weight: 800; BACKGROUND-COLOR: #EAEAEA; HEIGHT: 50px;">DISPLAY DRAFTLIST TABLE</h2>
+    <div class="form-body" style="background-color: #fff;">
+
+        <div class="text-left " style="padding-bottom: 2%">
+            <button class="btn btn-default" style="display: inline; float: right; background-color: #5F67BE; font-weight: 800; color:white; " onclick="location.href = '@Url.Action("Create", "Drafts")' ">CREATE MULTIPLE MESSAGE   <span class="fa fa-comment" style="color:black">  </span></button>
+
+            <button class="btn btn-default" style="display: inline; float: right; background-color: #5F67BE; font-weight: 800; color:white; " onclick="location.href = '@Url.Action("Create", "SingleDrafts")' ">CREATE INPUT MESSAGE   <span class="fa fa-comment-o" style="color:black">  </span></button>
+  
+                  
+                            <button class="btn btn-default " style="  background-color: #5F67BE; font-weight: 800; color:white; " onclick="location.href = '@Url.Action("Index", "Drafts")' ">Refresh  <span class="fa fa fa-refresh" style="color:black">  </span></button>
+       
+               
+   
+                </div>
+        <BR />
+        <br />
+
+
+        @if ((int)Session["Role_Id"] == 1)
+        {
+            <table id="searchTable" class="ui celled table ">
+                <thead></thead>
+            </table>
+
+            <table id="draftlisttable" class="ui celled table">
+
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th> MESSAGE</th>
+                        <th>SEND</th>
+                        <th> OFFICENAME</th>
+                        <th>DIVISIONNAME </th>
+                        <th>USERNAME</th>
+                        <th>DATE ADDED</th>
+                        <th>CELL N0.</th>
+                        <th>CELL# OWNER</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>MESSAGE</th>
+                        <th>SEND</th>
+                        <th>OFFICENAME</th>
+                        <th>DIVISIONNAME</th>
+                        <th>USERNAME</th>
+                        <th>DATE ADDED</th>
+                        <th>CELL N0.</th>
+                        <th>CELL# OWNER</th>
+                        @*@foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td>@user.draftId</td>
+                                    <td>@user.msg</td>
+                                    <td>@user.tag</td>
+                                    <td>@user.oficeName</td>
+                                    <td>@user.divisionName</td>
+                                    <td>@user.username</td>
+                                    <td>@user.Dateadded</td>
+                                    <td>@user.cellphonenum</td>
+                                    <td>@user.sendToName</td>
+                                </tr>
+                            }*@
+                    </tr>
+                </tfoot>
+            </table>
+
+        }
+        @if ((int)Session["Role_Id"] == 2)
+        {
+            <table id="searchTable2" class="ui celled table">
+                <thead></thead>
+            </table>
+
+            <table id="draftlisttable2" class="ui celled table">
+
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th> MESSAGE</th>
+                        <th>SEND</th>
+                        <th class="hideThis">OFFICENAME</th>
+                        <th class="hideThis">DIVISIONNAME</th>
+                        <th>USERNAME</th>
+                        <th>DATE ADDED</th>
+                        <th>CELL N0.</th>
+                        <th>CELL# OWNER</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>MESSAGE</th>
+                        <th>SEND</th>
+                        <th class="hideThis">OFFICENAME</th>
+                        <th class="hideThis">DIVISIONNAME</th>
+                        <th>USERNAME</th>
+                        <th>DATE ADDED</th>
+                        <th>CELL N0.</th>
+                        <th>CELL# OWNER</th>
+                        @*@foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td>@user.draftId</td>
+                                    <td>@user.msg</td>
+                                    <td>@user.tag</td>
+                                    <td>@user.oficeName</td>
+                                    <td>@user.divisionName</td>
+                                    <td>@user.username</td>
+                                    <td>@user.Dateadded</td>
+                                    <td>@user.cellphonenum</td>
+                                    <td>@user.sendToName</td>
+                                </tr>
+                            }*@
+                    </tr>
+                </tfoot>
+            </table>
+ 
+        }
+
+    </div>
+    @*<script src="~/Scripts/DataTables/dataTables.semanticui.js"></script>*@
+    <link href="~/lib/datatable/css/datatable.min.css" rel="stylesheet" />
+    <link href="~/lib/datatable/css/datatable.css" rel="stylesheet" />
+    <script src="~/lib/datatable/js/datatable.jquery.js"></script>
+
+    <script src="~/Scripts/DraftsDatatableJS/datatable1.js"></script>
+    <script src="~/Scripts/DraftsDatatableJS/datatable2.js"></script>
+    @*<script src="~/Scripts/DraftsDatatableJS/datatable3.js"></script>*@
+    <script src="~/Scripts/DraftsDatatableJS/datatable4.js"></script>
+    <link href="~/lib/datatables.net-jqui/dataTables.jqueryui.css" rel="stylesheet" />
+    <link href="~/lib/datatables.net-jqui/dataTables.jqueryui.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+
+    @section scripts{
+
+
+        <script>
+            $(document).ready(function () {
+                var message = $('#Message').text();
+                if (message !== '') {
+                    toastr.success('SAVE SUCCESSFULLY');
+                }
+                var timeout = "";
+
+                var empTable = $("#draftlisttable").DataTable({
+
+                    "ajax": {
+                        "scrollY": 500,
+                        "scroller": true,
+                        "responsive": true,
+                        "serverSide": true,
+                        "url": "/Drafts/LoadData",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "draftId", "name": "draftId", "className": "hideThis" },
+                        { "data": "msg", "name": "msg" },
+                        { "data": "tag", "name": "tag" },
+                        { "data": "oficeName", "name": "oficeName" },
+                        { "data": "divisionName", "name": "divisionName" },
+                        { "data": "username", "name": "username" },
+                        {
+                            "data": "Dateadded", "name": "Dateadded",
+                            "render": function (data, type, row, meta) {
+                                return `<span>${moment(data).format("M-D-Y-LTS")}</span>`;
+                            }
+                        },
+                        { "data": "cellphonenum", "name": "cellphonenum" },
+                        { "data": "sendToName", "name": "sendToName" },
+
+
+                    ],
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language": {
+                        "processing": "processing... please wait"
+                    },
+                    "dom": '<"top"l>rt<"bottom"ip><"clear">',
+                    "fnInitComplete": function (oSettings, json) {
+                        addSearchControl(json);
+                    },
+                    searchDelay: 350
+                });
+                function addSearchControl(json) {
+
+                    $("#searchTable thead").append($("#draftlisttable thead tr:first").clone());
+                    $("#searchTable thead tr:eq(0) th").each(function (index) {
+
+                        $(this).replaceWith('<th><input type="text" placeholder="SEARCH  ' + $(this).html() + '"></input></th>');
+                        var searchControl = $("#searchTable thead tr:eq(0) th:eq(" + index + ") input");
+
+
+                        searchControl.on('keyup', function () {
+                            clearTimeout(timeout);
+                            timeout = setTimeout(function () {
+                                empTable.column(index).search(searchControl.val()).draw();
+                            }, 1000)
+                        });
+                    });
+
+                }
+
+
+                var empTable2 = $("#draftlisttable2").DataTable({
+
+                    "ajax": {
+                        "scrollY": 500,
+                        "scroller": true,
+                        "responsive": true,
+                        "serverSide": true,
+                        "url": "/Drafts/LoadData",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "draftId", "name": "draftId", "className": "hideThis" },
+                        { "data": "msg", "name": "msg" },
+                        { "data": "tag", "name": "tag" },
+                        { "data": "oficeName", "name": "oficeName", "className": "hideThis" },
+                        { "data": "divisionName", "name": "divisionName", "className": "hideThis" },
+                        { "data": "username", "name": "username", "className": "hideThis" },
+                        {
+                            "data": "Dateadded", "name": "Dateadded",
+                            "render": function (data, type, row, meta) {
+                                return `<span>${moment(data).format("M-D-Y-LTS")}</span>`;
+                            }
+                        },
+                        { "data": "cellphonenum", "name": "cellphonenum" },
+                        { "data": "sendToName", "name": "sendToName" },
+
+
+                    ],
+                    "serverSide": "true",
+                    "order": [0, "asc"],
+                    "processing": "true",
+                    "language": {
+                        "processing": "processing... please wait"
+                    },
+                    "dom": '<"top"l>rt<"bottom"ip><"clear">',
+                    "fnInitComplete": function (oSettings, json) {
+                        addSearchControl2(json);
+                    },
+                    searchDelay: 350
+                });
+                function addSearchControl2(json) {
+                    $("#searchTable2 thead").append($("#draftlisttable2 thead tr:first").clone());
+                    $("#searchTable2 thead tr:eq(0) th").each(function (index) {
+
+                        $(this).replaceWith('<th><input type="text" placeholder="SEARCH  ' + $(this).html() + '"></input></th>');
+                        var searchControl = $("#searchTable2 thead tr:eq(0) th:eq(" + index + ") input");
+
+
+                        searchControl.on('keyup', function () {
+                            clearTimeout(timeout);
+                            timeout = setTimeout(function () {
+                                empTable2.column(index).search(searchControl.val()).draw();
+                            }, 1000)
+                        });
+                    });
+
+                }
+            });
+        </script>
+    }
+</body>

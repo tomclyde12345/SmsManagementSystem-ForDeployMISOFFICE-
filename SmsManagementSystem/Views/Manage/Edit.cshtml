@@ -1,0 +1,238 @@
+﻿@model SmsManagementSystem.ViewModel.ManageVM
+
+
+@{
+    ViewBag.Title = "Create Phonebook Sms Management System";
+    Layout = (int)Session["Role_Id"] == 1 ? "~/Views/Shared/_LayoutAdmin.cshtml" : "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<style>
+    .form {
+        background-color: black;
+        color: whitesmoke;
+        border: 6px solid black;
+        margin: 20px;
+        padding: 20px;
+        width: 350px;
+    }
+
+    span.field-validation-error {
+        color: red;
+    }
+</style>
+@using (Html.BeginForm("Edit", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <!--header-->
+    <br />
+
+    <h3 class="title1">EDIT ACCOUNT </h3>
+    <div class="main-w3l">
+        <div class="w3layouts-main" style="height: auto !important; width: 100% !important; background-color: #fff;">
+            <div class="form-title" style="height: 60px; color: #6F6F6F;"><h4>Edit Account Form : </h4></div>
+
+            <form action="#" method="post">
+                <div class="row">
+
+                    @{
+                        if ((int)Session["Role_Id"] != 1)
+                        {
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class=" tom">
+                                        FULLNAME  <label class="fa fa-user" style="color:black"> </label>
+                                    </div>
+
+
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @readonly = "readonly", @class = "col-md-12", style ="height:40px;"} })
+                                </div>
+
+
+                             
+                                <div class="form-group">
+                                    <div class="tom">
+                                        EMAIL ADDRESS  <label class="fa fa-address-card" style="color:black"> </label>
+                                    </div>
+
+                                    @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @readonly = "readonly", @class = "col-md-12", style = "height:40px;" } })
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <div class="tom">
+
+                                        OFFICE NAME <label class="fa fa-envelope" style="color:black"> </label>
+
+                                    </div>
+
+                                    @Html.DropDownListFor(d => d.Officeid, new SelectList(Model.OfficeList, "Id", "Name"), new { disabled = "disabled", @class = "col-md-12", style = "height:40px;" } )
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <div class=" tom">
+                                        DIVISON NAME  <label class="fa fa-building" style="color:black"> </label>
+                                    </div>
+
+                                    @Html.DropDownListFor(d => d.Divisionid, new SelectList(Model.DivisionList, "Id", "Name"), new { disabled = "disabled", @class = "col-md-12", style = "height:40px;" })
+
+                                </div>
+
+                                <div class="form-group">
+
+
+                                    <div class="tom">
+                                        USERNAME  <label class="fa fa-building-o" style="color:black"> </label>
+                                    </div>
+
+
+                                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @readonly = "readonly", @class = "col-md-12", style = "height:40px;" } })
+
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="tom">
+                                        IMAGE  <label class="fa fa-key" style="color:black"> </label>
+
+                                    </div>
+                                    @Html.TextBoxFor(m => m.files, "", new { @type = "file", @multiple = "multiple", @id = "imageBrowes", @class = "form-control", style = "color:#ff3939;height:40px; border:1px solid black;" })
+
+                                </div>
+                                @Html.HiddenFor(o => o.UserID)
+                            </div>
+                        }
+
+
+                        if ((int)Session["Role_Id"] == 1)
+                        {
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class=" tom">
+                                        FULLNAME  <label class="fa fa-user" style="color:black"> </label>
+                                    </div>
+
+
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "col-md-12", style = "height:40px;" } })
+                                </div>
+
+
+                    
+                                <div class="form-group">
+                                    <div class="tom">
+                                        EMAIL ADDRESS  <label class="fa fa-address-card" style="color:black"> </label>
+                                    </div>
+
+                                    @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "col-md-12", style = "height:40px;" } })
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <div class="tom">
+
+                                        OFFICE NAME <label class="fa fa-envelope" style="color:black"> </label>
+
+                                    </div>
+
+                                    @Html.DropDownListFor(d => d.Officeid, new SelectList(Model.OfficeList, "Id", "Name"), new { @class = "col-md-12", style = "  height:40px;" })
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <div class=" tom">
+                                        DIVISON NAME  <label class="fa fa-building" style="color:black"> </label>
+                                    </div>
+
+                                    @Html.DropDownListFor(d => d.Divisionid, new SelectList(Model.DivisionList, "Id", "Name"), new { @class = "col-md-12", style = "  height:40px;" })
+
+                                </div>
+
+                                <div class="form-group">
+
+
+                                    <div class="tom">
+                                        USERNAME  <label class="fa fa-building-o" style="color:black"> </label>
+                                    </div>
+
+
+                                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "col-md-12", style = "height:40px;" } })
+
+
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="tom">
+                                        IMAGE  <label class="fa fa-key" style="color:black"> </label>
+
+                                    </div>
+                                    @Html.TextBoxFor(m => m.files, "", new { @type = "file", @multiple = "multiple", @id = "imageBrowes", @class = "form-control", style = "color:#ff3939;height:40px; border:1px solid black;" })
+
+                                </div>
+                                @Html.HiddenFor(o => o.UserID)
+                            </div>
+                        }
+                    }
+                </div>
+              
+                <div style="padding: 2% 0;">
+                    <div class="text-center">
+
+                        <input type="submit" value="EDIT" class="btn btn-default" style="width: 120px; color:white; background-color: rgba(97, 100, 193, 0.85); height: 50px; border-radius: 20px; font-weight: 800; " />
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <!--//main-->
+    <!--footer-->
+    <div class="footer-w3l">
+
+    </div>
+
+    <script src="~/Scripts/Adminjsdash/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/lib/chosen/chosen.css" rel="stylesheet" />
+    <link href="~/lib/chosen/chosen.min.css" rel="stylesheet" />
+    <script src="~/lib/chosen/chosen.jquery.js"></script>
+    <script src="~/lib/chosen/chosen.jquery.min.js"></script>
+
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#multipledrop").chosen();
+            width: "100%"
+        });
+
+    </script>
+}
+
+
+

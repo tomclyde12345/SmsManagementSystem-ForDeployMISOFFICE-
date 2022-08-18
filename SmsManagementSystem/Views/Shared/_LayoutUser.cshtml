@@ -1,0 +1,380 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+@*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<head>
+
+
+    <link href="/Content/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/clndr.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/jqvmap.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Font-awesome/fontawesome.css" rel="stylesheet" />
+    <link href="/Content/Font-awesome/fontawesome.min.css" rel="stylesheet" />
+
+
+    <link href="/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/brands.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/brands.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/regular.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/regular.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/solid.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/solid.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/svg-with-js.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/svg-with-js.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/v4-font-face.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/v4-font-face.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/v5-font-face.css" rel="stylesheet" />
+    <link href="/lib/font-awesome/css/v5-font-face.min.css" rel="stylesheet" />
+
+    <title>SMS MANAGEMENT SYSTEM/USER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Novus Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="/Content/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="/Content/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <!-- font-awesome icons -->
+    <link href="/Content/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js-->
+    <script src="/Scripts/js/jquery-1.11.1.min.js"></script>
+    <script src="/Scripts/js/modernizr.custom.js"></script>
+    <!--webfonts-->
+    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!--//webfonts-->
+    <!--animate-->
+    <link href="/Content/css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <script src="/Scripts/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+    <!-- chart -->
+    <script src="/Scripts/js/Chart.js"></script>
+    <!-- //chart -->
+    <!--Calender--  >
+    <link rel="stylesheet" href="css/clndr.css" type="text/css" />
+    <script src="js/underscore-min.js" type="text/javascript"></script>
+    <script src="js/moment-2.2.1.js" type="text/javascript"></script>
+    <script src="js/clndr.js" type="text/javascript"></script>
+    <script src="js/site.js" type="text/javascript"></script>
+    <!--End Calender-->
+    <!-- Metis Menu -->
+    <script src="/Scripts/js/metisMenu.min.js"></script>
+    <script src="/Scripts/js/custom.js"></script>
+    <link href="/Content/css/custom.css" rel="stylesheet">
+    <!--//Metis Menu -->
+</head>
+<body class="cbp-spmenu-push ">
+    <div class="main-content">
+        <!--left-fixed -navigation-->
+        <div class=" sidebar" role="navigation">
+            <div class="navbar-collapse">
+                <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+                    <ul class="nav" id="side-menu">
+                        <div class="text-center">
+                            @{ 
+
+                            Html.RenderAction("UsersPartial", "Manage");
+                        }
+                            @*<img src="~/Images/city-hall.png" style="width:120px " />*@
+                        </div>
+
+
+                        <li class="">
+                            <a href="#"><i class="fa fa-phone-square nav_icon"></i>PHONEBOOK <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>@Html.ActionLink("CREATE PHONEBOOK", "Create", "Phonebooks")</li>
+                                <li>@Html.ActionLink("DISPLAY PHONEBOOK", "Index", "Phonebooks")</li>
+                            </ul>
+                            <!-- /nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-envelope-o nav_icon"></i>DRAFTS <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li>@Html.ActionLink("CREATE INPUT MESSAGE ", "Create", "SingleDrafts")</li>
+                                <li>@Html.ActionLink("CREATE MULTIPLE MESSAGE ", "Create", "Drafts")</li>
+                                <li>@Html.ActionLink("DISPLAY DRAFTS", "Index", "Drafts")</li>
+
+                            </ul>
+                            <!-- /nav-second-level -->
+                        </li>
+                        <li class="">
+                            <a href="#"><i class="fa fa-user nav_icon"></i>MANAGE ACCOUNT <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+
+                                <li>@Html.ActionLink("DISPLAY ACCOUNT", "UsersList", "Manage")</li>
+                            </ul>
+                            <!-- /nav-second-level -->
+                        </li>
+
+                    </ul>
+                    <!-- //sidebar-collapse -->
+                </nav>
+            </div>
+        </div>
+        <!--left-fixed -navigation-->
+        <!-- header-starts -->
+        <div class="sticky-header header-section ">
+            <div class="header-left">
+                <!--toggle button start-->
+                <button id="showLeftPush"><i class="fa fa-bars"></i></button>
+                <!--toggle button end-->
+                <!--logo -->
+                <div class="logo">
+                    <a href="/User/Index">
+                        <h1>SMS</h1>
+                        <h5 style="color:white;">Management System</h5>
+                    </a>
+                </div>
+                <!--//logo-->
+                <!--search-box-->
+                <div class="search-box">
+                    <form class="input">
+                        <input class="sb-search-input input__field--madoka" placeholder="Search..." type="search" id="input-31" />
+                        <label class="input__label" for="input-31">
+                            <svg class="graphic" width="100%" height="100%" viewBox="0 0 404 77" preserveAspectRatio="none">
+                                <path d="m0,0l404,0l0,77l-404,0l0,-77z" />
+                            </svg>
+                        </label>
+                    </form>
+                </div><!--//end-search-box-->
+                <div class="clearfix"> </div>
+            </div>
+            <div class="header-right">
+                <div class="profile_details_left">
+                    <!--notifications of menu start -->
+                    <ul class="nofitications-dropdown">
+                        <li class="dropdown head-dpdn">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="notification_header">
+                                        <h3>You have 3 new messages</h3>
+                                    </div>
+                                </li>
+                                <li style="background-color: #3e3e3e;">
+                                    <a href="/SingleDrafts/Create">
+                                        <div class="user_img"><img src="~/Images/message1.jpg" alt=""></div>
+                                        <div class="notification_desc">
+                                            <p style="color:white;">Create Input Message</p>
+                                            <p><span>see</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li class="odd" style="background-color: #3e3e3e;">
+                                    <a href="/Drafts/Create">
+                                        <div class="user_img"><img src="~/Images/message2.jpg" alt=""></div>
+                                        <div class="notification_desc">
+                                            <p style="color:white;">Create Multiple Message </p>
+                                            <p><span>see</span></p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <div class="notification_bottom">
+                                        <a href="/Drafts/Index">See all messages</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                    <div class="clearfix"> </div>
+                </div>
+                <!--notification menu end -->
+                <div class="profile_details">
+                    <ul>
+                        <li class="dropdown profile_details_drop">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <div class="profile_img">
+                                    @{
+
+                                        Html.RenderAction("UserPartialHeaderPic", "Manage");
+                                    }
+                                    <span class="prfil-img"><img src="images/a.png" alt=""> </span>
+                                    <div class="user-name">
+                                        @{
+
+                                            Html.RenderAction("PartialNameUser", "Manage");
+                                        }
+                                        <span>User</span>
+                                    </div>
+                                    <i class="fa fa-angle-down lnr"></i>
+                                    <i class="fa fa-angle-up lnr"></i>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu drp-mnu">
+                            
+                                <li> <a href="/Manage/UsersList"><i class="fa fa-user"></i> Account</a> </li>
+                                <li> <a href="/Account/Logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <!-- //header-ends -->
+        <!-- main content start-->
+        <div id="page-wrapper">
+            <div class="main-page">
+                <div class="row-one">
+                    <div class="col-md-4 widget">
+                        <a href="/Drafts/Create" class="YpRevival" style="display: block; height: 85px; width: 100%;">
+                        </a>
+                        <div class="stats-left ">
+                            <h5><a href="/Drafts/Create" style="color:white;">Create Multiple </a></h5>
+                            <h4><a href="/Drafts/Create" style="color:white;"> Message</a></h4>
+
+                        </div>
+                        <div class="stats-right">
+                            <label class="fa fa-envelope-o"></label>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-4 widget states-mdl">
+                        <a href="/Drafts/Index" class="YpRevival" style="display: block; height: 85px; width: 100%;">
+                        </a>
+                        <div class="stats-left">
+                            <h5><a href="/Drafts/Index" style="color:white;">Display</a></h5>
+                            <h4><a href="/Drafts/Index" style="color:white;">Drafts</a></h4>
+                        </div>
+                        <div class="stats-right">
+                            <label class="fa fa-building-o"></label>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-4 widget states-last">
+                        <a href="/Phonebooks/Index" class="YpRevival" style="display: block;height: 85px; width: 100%;">
+                        </a>
+                        <div class="stats-left">
+                            <h5><a href="/Phonebooks/Index" style="color:white;">Display</a></h5>
+                            <h4><a href="/Phonebooks/Index" style="color:white;">Phonebooks</a></h4>
+                        </div>
+                        <div class="stats-right">
+                            <label class="fa fa-phone-square"></label>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="row">
+                 
+                    <div class="clearfix"> </div>
+                </div>
+                @RenderBody()
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <!--footer-->
+        <div class="footer">
+            <p>&copy; 2016 Novus Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
+        </div>
+        <!--//footer-->
+    </div>
+    <!-- Classie -->
+    <script src="/Scripts/js/classie.js"></script>
+    <script>
+        var menuLeft = document.getElementById('cbp-spmenu-s1'),
+            showLeftPush = document.getElementById('showLeftPush'),
+            body = document.body;
+        showLeftPush.onclick = function () {
+            classie.toggle(this, 'active');
+            classie.toggle(body, 'cbp-spmenu-push-toright');
+            classie.toggle(menuLeft, 'cbp-spmenu-open');
+            disableOther('showLeftPush');
+        };
+        function disableOther(button) {
+            if (button !== 'showLeftPush') {
+                classie.toggle(showLeftPush, 'disabled');
+            }
+        }
+    </script>
+    <!--scrolling js-->
+    @*<script src="/Scripts/js/jquery.nicescroll.js"></script>*@
+    <script src="/Scripts/js/scripts.js"></script>
+    <link href="~/Content/TomRevival.css" rel="stylesheet" />
+
+    <!--//scrolling js-->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/Scripts/js/bootstrap.js"></script>
+
+
+
+
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+
+    @section scripts {
+
+        <script type="text/javascript"></script>
+        <script src="/Scripts/js/custom.js" type="text/javascript"></script>
+        <script src="/Scripts/js/bootstrap.js"></script>
+        <script src="/Scripts/js/Chart.js" type="text/javascript"></script>
+        <script src="/Scripts/js/classie.js " type="text/javascript"></script>
+        <script src="/Scripts/js/clndr.js" type="text/javascript"></script>
+        <script src="/Scripts/js/custom.js" type="text/javascript"></script>
+        <script src="/Scripts/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="/Scripts/js/jquery.circlechart.js" type="text/javascript"></script>
+        <script src="/Scripts/js/jquery.nicescroll.js" type="text/javascript"></script>
+        <script src="/Scripts/js/jquery.vmap.js" type="text/javascript"></script>
+        <script src="/Scripts/js/jquery.vmap.sampledata.js" type="text/javascript"></script>
+        <script src="/Scripts/js/jquery.vmap.world.js" type="text/javascript"></script>
+        <script src="/Scripts/js/metisMenu.min.js" type="text/javascript"></script>
+        <script src="/Scripts/js/modernizr.custom.js" type="text/javascript"></script>
+        <script src="/Scripts/js/moment-2.2.1.js" type="text/javascript"></script>
+        <script src="/Scripts/js/scripts.js" type="text/javascript"></script>
+        <script src="/Scripts/js/site.js" type="text/javascript"></script>
+        <script src="/Scripts/js/skycons.js" type="text/javascript"></script>
+        <script src="/Scripts/js/underscore-min.js" type="text/javascript"></script>
+        <script src="/Scripts/js/validator.min.js" type="text/javascript"></script>
+        <script src="/Scripts/js/wow.min.js"></script>
+        <script src="/lib/font-awesome/js/fontawesome.js"></script>
+        <script src="/lib/font-awesome/js/fontawesome.min.js"></script>
+        <script src="/Scripts/bootstrap.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>
+        <script src="/Scripts/jquery-3.4.1.js"></script>
+        <script src="/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="/Scripts/jquery-3.4.1.slim.js"></script>
+        <script src="/Scripts/jquery-3.4.1.slim.min.js"></script>
+        <script src="/Scripts/modernizr-2.8.3.js"></script>
+        <link href="/Content/bootstrap.css" rel="stylesheet" />
+        <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="/Content/bootstrap-theme.css" rel="stylesheet" />
+        <link href="/Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+    }
+</body>
+</html>

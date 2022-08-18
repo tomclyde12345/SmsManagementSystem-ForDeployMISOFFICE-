@@ -1,0 +1,92 @@
+﻿@model SmsManagementSystem.Models.CgppOffice
+
+@{
+    ViewBag.Title = "Create Office Sms Management System";
+    Layout = (int)Session["Role_Id"] == 1 ? "~/Views/Shared/_LayoutAdmin.cshtml" : "~/Views/Shared/_LayoutUser.cshtml";
+}
+@Styles.Render("~/Content/css4")
+@Scripts.Render("~/bundles/modernizr")
+@*<h2>@((int)Session["Role_Id"] == 1 ? "Admin" : "User")</h2>*@
+@*<style>
+        .form-grids {
+            display: inline-block;
+            width: 700px;
+            margin-left: 140px;
+        }
+    </style>*@
+<span style="display:none;" id="Message" class="d-none">@TempData["Message"]</span>
+<h3 class="title1">EDIT OFFICES</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-two widget-shadow">
+        <div class="form-title">
+            <h4 style="color: #6F6F6F;">Edit Office Form :</h4>
+        </div>
+        <div class="form-body">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="exampleInputName2"> Office Name <i class="fa fa-building"></i> </label>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", maxlength = "70", @type = "text", placeholder = "Enter Office Name", style = "border-color:black;display:inline ;", required = "required" } })
+                    @Html.ValidationMessageFor(m => m.Name)
+                    <div class=" row"></div>
+                <div class="text-center">
+                    <input type="submit" value="SUBMIT" class="btn btn-default" style="width: 120px; color:white; margin:auto; background-color: rgba(97, 100, 193, 0.85); height: 50px; border-radius: 20px; font-weight: 800;" />
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="~/Scripts/fontawesome.js"></script>
+    <script src="~/Scripts/fontawesome.min.js"></script>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+@section scripts{
+
+    <script type="text/javascript">
+                                            //$(function () {
+                                            //    $("#toastrSuccess").click(function () {
+                                            //        toastr.success("Created Successfully");
+                                            //    });
+                                            //});
+
+
+    </script>
+}
+
+@*<div class="form-horizontal">
+        <h4>CgppOffice</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

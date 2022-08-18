@@ -1,0 +1,15 @@
+﻿#draftlisttable thead tr th:first-child, #draftlisttable tbody tr td:first-child, #draftlisttable tfoot tr th:first-child, #searchTable thead tr th:first-child {
+    display: none;
+}
+
+#draftlisttable2 thead tr th:first-child, #draftlisttable2 tbody tr td:first-child, #draftlisttable2 tfoot tr th:first-child, #searchTable2 thead tr th:first-child {
+    display: none;
+}
+
+.hideThis {
+    display: none;
+}
+
+#searchTable2 thead tr th:nth-child(4), #searchTable2 thead tr th:nth-child(5), #searchTable2 thead tr th:nth-child(6) {
+    display: none;
+}
