@@ -178,8 +178,8 @@ namespace SmsManagementSystem.Controllers
                 usersInDb.DateAdded = DateTime.Now;
                 usersInDb.EmailID = userdet.EmailAddress;
                 usersInDb.CgppOffice = Db.CgppOffices.Find(userdet.Officeid);
-                usersInDb.UserName = userdet.Username;
-                usersInDb.Password = userdet.Password;
+                usersInDb.UserName = userdet?.Username;
+                usersInDb.Password = userdet?.Password;
                 usersInDb.RPassword = userdet.Password;
                 usersInDb.CgppDivision = Db.CgppDivisions.Find(userdet.Divisionid);
 
