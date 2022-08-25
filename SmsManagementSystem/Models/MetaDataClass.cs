@@ -12,10 +12,13 @@ namespace SmsManagementSystem.Models
  
         [Required(ErrorMessage = "The Username Field is Required", AllowEmptyStrings = false)]
         [System.Web.Mvc.Remote("IsUsernameAvailble", "Manage", ErrorMessage = "Invalid UserName")]
+        [RegularExpression("(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[#?!@$%^&*\\-_]).{8,}$", ErrorMessage = "Invalid  UsersName")]
         public string UserName { get; set; }
+        [RegularExpression("(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[#?!@$%^&*\\-_]).{8,}$", ErrorMessage = "Please Type Valid Password")]
         [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
         public string Password { get; set; }
         [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
+        [RegularExpression("(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[#?!@$%^&*\\-_]).{8,}$", ErrorMessage = "Invalid  Password")]
         [Compare("Password", ErrorMessage = "Password Mismatch")]
         [Display(Name = "Retype-Password")]
         public string RPassword { get; set; }

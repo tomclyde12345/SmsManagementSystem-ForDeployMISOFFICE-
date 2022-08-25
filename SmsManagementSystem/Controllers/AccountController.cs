@@ -25,9 +25,6 @@ namespace SmsManagementSystem.Controllers
             var result = Db.Logins.SingleOrDefault(a => a.Username == log.Username);
 
 
-
-          
-
             if (result != null)
             {
                 if(!encoder.Compare(log.Password, result.Password))
@@ -70,6 +67,8 @@ namespace SmsManagementSystem.Controllers
             FormsAuthentication.SignOut();
             return Redirect("Login");
         }
+
+
 
     }
 

@@ -47,11 +47,11 @@
                                     </div>
 
 
-                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @readonly = "readonly", @class = "col-md-12", style ="height:40px;"} })
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @readonly = "readonly", @class = "col-md-12", style = "height:40px;" } })
                                 </div>
 
 
-                             
+
                                 <div class="form-group">
                                     <div class="tom">
                                         EMAIL ADDRESS  <label class="fa fa-address-card" style="color:black"> </label>
@@ -70,7 +70,7 @@
 
                                     </div>
 
-                                    @Html.DropDownListFor(d => d.Officeid, new SelectList(Model.OfficeList, "Id", "Name"), new { disabled = "disabled", @class = "col-md-12", style = "height:40px;" } )
+                                    @Html.DropDownListFor(d => d.Officeid, new SelectList(Model.OfficeList, "Id", "Name"), new { disabled = "disabled", @class = "col-md-12", style = "height:40px;" })
 
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
 
                                 </div>
 
-                             
+
                                 @Html.HiddenFor(o => o.UserID)
                             </div>
                         }
@@ -131,7 +131,7 @@
                                 </div>
 
 
-                    
+
                                 <div class="form-group">
                                     <div class="tom">
                                         EMAIL ADDRESS  <label class="fa fa-address-card" style="color:black"> </label>
@@ -150,7 +150,7 @@
 
                                     </div>
 
-                                    @Html.DropDownListFor(d => d.Officeid, new SelectList(Model.OfficeList, "Id", "Name"), new { @class = "col-md-12", style = "  height:40px;" })
+                                    @Html.DropDownListFor(d => d.Officeid, new SelectList(Model.OfficeList, "Id", "Name"), new { @class = "col-md-12", style = "  height:40px;", @id="OfficeId" })
 
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
                                         DIVISON NAME  <label class="fa fa-building" style="color:black"> </label>
                                     </div>
 
-                                    @Html.DropDownListFor(d => d.Divisionid, new SelectList(Model.DivisionList, "Id", "Name"), new { @class = "col-md-12", style = "  height:40px;" })
+                                    @Html.DropDownListFor(d => d.Divisionid, new SelectList(Model.DivisionList, "Id", "Name"), new { @class = "col-md-12", style = "  height:40px;", @id="DivisionId" })
 
                                 </div>
 
@@ -210,7 +210,7 @@
                         }
                     }
                 </div>
-              
+
                 <div style="padding: 2% 0;">
                     <div class="text-center">
 
@@ -237,6 +237,7 @@
     <script src="~/lib/chosen/chosen.jquery.js"></script>
     <script src="~/lib/chosen/chosen.jquery.min.js"></script>
 
+
 }
 
 @section scripts{
@@ -248,7 +249,18 @@
             $("#multipledrop").chosen();
             width: "100%"
         });
+        $(document).ready(function () {
 
+
+            $("#OfficeId").change(function () {
+                $.get("/Manage/GetDivisionsList", { OfficeId: $("#OfficeId").val() }, function (data) {
+                    $("#DivisionId").empty();
+                    $.each(data, function (index, row) {
+                        $("#DivisionId").append("<option value='" + row.Id + "'>" + row.Name + " </option>") //MULTIPLE DEPENDENT DROPDOWN
+                    });
+                });
+            })
+        });
     </script>
 }
 

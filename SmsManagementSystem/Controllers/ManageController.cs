@@ -56,6 +56,14 @@ namespace SmsManagementSystem.Controllers
             return Json(DivisionList, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetDivisionsList(int OfficeId)
+        {
+
+            Db.Configuration.ProxyCreationEnabled = false;
+            List<CgppDivision> DivisionList = Db.CgppDivisions.Where(x => x.OfficeId == OfficeId).ToList();
+            return Json(DivisionList, JsonRequestBehavior.AllowGet);
+        }
+
 
 
 
@@ -379,10 +387,11 @@ namespace SmsManagementSystem.Controllers
 
                 var pw = encoder.Encode(Password);
                 usersInDb.Password = pw;
-              
+ 
 
                 Db.SaveChanges();
             }
+
 
             TempData["Message"] = "SAVE SUCCESSFULLY";
             return RedirectToAction("UsersList");
