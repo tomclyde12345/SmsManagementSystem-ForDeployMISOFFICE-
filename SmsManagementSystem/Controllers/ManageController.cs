@@ -56,6 +56,14 @@ namespace SmsManagementSystem.Controllers
             return Json(DivisionList, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetDivisionsList(int OfficeId)
+        {
+
+            Db.Configuration.ProxyCreationEnabled = false;
+            List<CgppDivision> DivisionList = Db.CgppDivisions.Where(x => x.OfficeId == OfficeId).ToList();
+            return Json(DivisionList, JsonRequestBehavior.AllowGet);
+        }
+
 
 
 
@@ -174,11 +182,13 @@ namespace SmsManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 var usersInDb = Db.Users.Single(c => c.UserID == userdet.UserID);
+                var loginDb = Db.Logins.Find(usersInDb.LoginID);
                 usersInDb.Name = userdet.Name;
                 usersInDb.DateAdded = DateTime.Now;
                 usersInDb.EmailID = userdet.EmailAddress;
                 usersInDb.CgppOffice = Db.CgppOffices.Find(userdet.Officeid);
                 usersInDb.UserName = userdet?.Username;
+                loginDb.Username = userdet?.Username; 
                 usersInDb.Password = userdet?.Password;
                 usersInDb.RPassword = userdet.Password;
                 usersInDb.CgppDivision = Db.CgppDivisions.Find(userdet.Divisionid);
@@ -364,6 +374,27 @@ namespace SmsManagementSystem.Controllers
 
 
             return PartialView(resetpic);
+        }
+
+        [HttpPost]
+        public ActionResult ResetPassword(int UserID, string Password )
+        {
+            ScryptEncoder encoder = new ScryptEncoder();
+            if (ModelState.IsValid)
+            {
+                var id = Db.Users.Single(c => c.UserID == UserID).LoginID;
+                var usersInDb = Db.Logins.Find(id);
+
+                var pw = encoder.Encode(Password);
+                usersInDb.Password = pw;
+ 
+
+                Db.SaveChanges();
+            }
+
+
+            TempData["Message"] = "SAVE SUCCESSFULLY";
+            return RedirectToAction("UsersList");
         }
 
 

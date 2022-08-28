@@ -4,147 +4,147 @@
     Layout = (int)Session["Role_Id"] == 1 ? "~/Views/Shared/_LayoutAdmin.cshtml" : "~/Views/Shared/_LayoutUser.cshtml";
 }
 <style>
-    body {
-        background: url(/images/2.jpg) no-repeat 100% 100%;
-    }
+     body {
+         background: url(/images/2.jpg) no-repeat 100% 100%;
+     }
 
-    td {
-        border-bottom: 1px solid black !important;
-        color: black;
-    }
+     td {
+         border-bottom: 1px solid black !important;
+         color: black;
+     }
 
-    #login-modal .modal-dialog {
-        width: 350px;
-    }
+     #login-modal .modal-dialog {
+         width: 350px;
+     }
 
-    #login-modal input[type=text], input[type=password] {
-        margin-top: 10px;
-    }
+     #login-modal input[type=text], input[type=password] {
+         margin-top: 10px;
+     }
 
-    #div-login-msg,
-    #div-lost-msg,
-    #div-register-msg {
-        border: 1px solid #dadfe1;
-        height: 30px;
-        line-height: 28px;
-        transition: all ease-in-out 500ms;
-    }
+     #div-login-msg,
+     #div-lost-msg,
+     #div-register-msg {
+         border: 1px solid #dadfe1;
+         height: 30px;
+         line-height: 28px;
+         transition: all ease-in-out 500ms;
+     }
 
-        #div-login-msg.success,
-        #div-lost-msg.success,
-        #div-register-msg.success {
-            border: 1px solid #68c3a3;
-            background-color: #c8f7c5;
-        }
+         #div-login-msg.success,
+         #div-lost-msg.success,
+         #div-register-msg.success {
+             border: 1px solid #68c3a3;
+             background-color: #c8f7c5;
+         }
 
-        #div-login-msg.error,
-        #div-lost-msg.error,
-        #div-register-msg.error {
-            border: 1px solid #eb575b;
-            background-color: #ffcad1;
-        }
+         #div-login-msg.error,
+         #div-lost-msg.error,
+         #div-register-msg.error {
+             border: 1px solid #eb575b;
+             background-color: #ffcad1;
+         }
 
-    #icon-login-msg,
-    #icon-lost-msg,
-    #icon-register-msg {
-        width: 30px;
-        float: left;
-        line-height: 28px;
-        text-align: center;
-        background-color: #dadfe1;
-        margin-right: 5px;
-        transition: all ease-in-out 500ms;
-    }
+     #icon-login-msg,
+     #icon-lost-msg,
+     #icon-register-msg {
+         width: 30px;
+         float: left;
+         line-height: 28px;
+         text-align: center;
+         background-color: #dadfe1;
+         margin-right: 5px;
+         transition: all ease-in-out 500ms;
+     }
 
-        #icon-login-msg.success,
-        #icon-lost-msg.success,
-        #icon-register-msg.success {
-            background-color: #68c3a3 !important;
-        }
+         #icon-login-msg.success,
+         #icon-lost-msg.success,
+         #icon-register-msg.success {
+             background-color: #68c3a3 !important;
+         }
 
-        #icon-login-msg.error,
-        #icon-lost-msg.error,
-        #icon-register-msg.error {
-            background-color: #eb575b !important;
-        }
+         #icon-login-msg.error,
+         #icon-lost-msg.error,
+         #icon-register-msg.error {
+             background-color: #eb575b !important;
+         }
 
-    #img_logo {
-        max-height: 100px;
-        max-width: 100px;
-    }
+     #img_logo {
+         max-height: 100px;
+         max-width: 100px;
+     }
 
-    /* #########################################
-   #    override the bootstrap configs     #
-   ######################################### */
+     /* #########################################
+    #    override the bootstrap configs     #
+    ######################################### */
 
-    .modal-backdrop.in {
-        filter: alpha(opacity=50);
-        opacity: .8;
-    }
+     .modal-backdrop.in {
+         filter: alpha(opacity=50);
+         opacity: .8;
+     }
 
-    .modal-content {
-        width:500px;
-        background-color: #ececec;
-        border: 1px solid #bdc3c7;
-        border-radius: 0px;
-        outline: 0;
-    }
+     .modal-content {
+         width: 500px;
+         background-color: #ececec;
+         border: 1px solid #bdc3c7;
+         border-radius: 0px;
+         outline: 0;
+     }
 
-    .modal-header {
-        min-height: 16.43px;
-        padding: 15px 15px 15px 15px;
-        border-bottom: 0px;
-    }
+     .modal-header {
+         min-height: 16.43px;
+         padding: 15px 15px 15px 15px;
+         border-bottom: 0px;
+     }
 
-    .modal-body {
-        position: relative;
-        padding: 5px 15px 5px 15px;
-    }
+     .modal-body {
+         position: relative;
+         padding: 5px 15px 5px 15px;
+     }
 
-    .modal-footer {
-        padding: 15px 15px 15px 15px;
-        text-align: left;
-        border-top: 0px;
-    }
+     .modal-footer {
+         padding: 15px 15px 15px 15px;
+         text-align: left;
+         border-top: 0px;
+     }
 
-    .checkbox {
-        margin-bottom: 0px;
-    }
+     .checkbox {
+         margin-bottom: 0px;
+     }
 
-    .btn {
-        border-radius: 0px;
-    }
+     .btn {
+         border-radius: 0px;
+     }
 
-        .btn:focus,
-        .btn:active:focus,
-        .btn.active:focus,
-        .btn.focus,
-        .btn:active.focus,
-        .btn.active.focus {
-            outline: none;
-        }
+         .btn:focus,
+         .btn:active:focus,
+         .btn.active:focus,
+         .btn.focus,
+         .btn:active.focus,
+         .btn.active.focus {
+             outline: none;
+         }
 
-    .btn-lg, .btn-group-lg > .btn {
-        border-radius: 0px;
-    }
+     .btn-lg, .btn-group-lg > .btn {
+         border-radius: 0px;
+     }
 
-    .btn-link {
-        padding: 5px 10px 0px 0px;
-        color: #95a5a6;
-    }
+     .btn-link {
+         padding: 5px 10px 0px 0px;
+         color: #95a5a6;
+     }
 
-        .btn-link:hover, .btn-link:focus {
-            color: #2c3e50;
-            text-decoration: none;
-        }
+         .btn-link:hover, .btn-link:focus {
+             color: #2c3e50;
+             text-decoration: none;
+         }
 
-    .glyphicon {
-        top: 0px;
-    }
+     .glyphicon {
+         top: 0px;
+     }
 
-    .form-control {
-        border-radius: 0px;
-    }
+     .form-control {
+         border-radius: 0px;
+     }
 </style>
 <span style="display:none;" id="Message" class="d-none">@TempData["Message"]</span>
 
@@ -230,8 +230,10 @@
 
                     </td>
                     <td>
-                        <p class="text-center"><a href="#" class="btn btn-default btn-lg" role="button" data-toggle="modal" data-target="#login-modal" style=" background-color: #5F67BE;
-                                font-weight: 800; color: white; border-radius: 20px;font-size:16px; ">Reset Passord <i class="fa fa-lock" style="color:black;"></i>  </a></p>
+                        <p class="text-center">
+                            <a href="#" target-id="@user.UserID" target-username="@(user.LoginID.HasValue ? user.Login.Username : "N/A")" class="btn btn-default btn-lg resetPass" role="button" data-toggle="modal" data-target="#login-modal" style=" background-color: #5F67BE;
+                                font-weight: 800; color: white; border-radius: 20px;font-size:16px; ">Reset Passord <i class="fa fa-lock" style="color:black;"></i>  </a>
+                        </p>
                     </td>
                 </tr>
             }
@@ -240,61 +242,107 @@
 </div>
 
 
-
-
-
 <div class="container">
     <div class="row">
-     
-     
     </div>
 </div>
 
+<script type="text/javascript">
+    chkpwd = function (validate) {
+        var str = document.getElementById('pass').value;
+        if (str.length < 8) {
+            document.getElementById("validatepass").innerHTML = "Password Length Must Be 8 Char";
+            document.getElementById("validatepass").style.color = "Red";
+            return ("too_short");
+        }
+        else if (str.search(/[0-9]/) == -1) {
+            document.getElementById("validatepass").innerHTML = "Atleast 1 Numeric";
+            document.getElementById("validatepass").style.color = "Red";
+            return ("no_number");
+        }
+        else if (str.search(/[a-z]/) == -1) {
+            document.getElementById("validatepass").innerHTML = "Atleast 1 SmallCase letter";
+            document.getElementById("validatepass").style.color = "Red";
+            return ("no_smallletter");
+        }
+        else if (str.search(/[A-Z]/) == -1) {
+            document.getElementById("validatepass").innerHTML = "Atleast 1 Uppercase letter";
+            document.getElementById("validatepass").style.color = "Red";
+            return ("no_upperletter");
+        }
+        else if (str.search(/[!\#\$\&\^\%\(\)\_\+\.\,\;\:]/) == -1) {
+            document.getElementById("validatepass").innerHTML = "Atleast 1 Special Character letter";
+            document.getElementById("validatepass").style.color = "Red";
+            return ("no_Specialletter");
+        }
+        var resetformdata = $("#resetform").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/Manage/ResetPassword",
+            data: resetformdata,
+            success: function () {
+                toastr.success('UPDATE PASSWORD SUCCESSFULLY');
+                $('#login-modal').modal('hide');
+                setTimeout(function () {
+                  
+                    window.location.href = "/Manage/Userslist";
+                }, 2000);
+            }
+        });
+        document.getElementById("validatepass").innerHTML = "Successful";
+     
+        document.getElementById("validatepass").style.color = "Green";
+        return ("ok");
+    }
+
+</script>
+
+
 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <div  class="form-title" style=" width: 500px; background-color: #B4B4B4; height: 45px; color: black; font-weight: 800;"> RESET PASSWORD</div>
+        <div class="form-title" style=" width: 500px; background-color: #B4B4B4; height: 45px; color: black; font-weight: 800;"> RESET PASSWORD</div>
+        <span style="display:none;" id="Message" class="d-none">@TempData["Message"]</span>
         <div class="modal-content">
             <div class="modal-header" align="center">
+
                 @{
 
                     Html.RenderAction("ResetPasswordPicture", "Manage");
                 }
-            
-
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
             </div>
-
             <div id="div-forms">
 
+                <form id="resetform">
 
-
-                <form id="login-form">
                     <div class="modal-body">
 
-                            <div class="alert alert-info">
-                                Please fill details to create a New Password
-                            </div>
-                         
-                   
-                        <input id="login_username" style="border: 1px solid black !important;" class="form-control" type="text" placeholder="Enter New Password " required>
-                        <input id="login_password"  style="border: 1px solid black !important;" class="form-control" type="password" placeholder="Re-Type New Password" required>
-
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember me
-                            </label>
+                        <div class="alert alert-info">
+                            Please fill details to create a New Password
                         </div>
+
+
+
+
+                        <input name="UserId" type="hidden" id="UserId" />
+                        <label style="color:black;"> <i class="fa fa-user"></i> USERNAME</label>
+                        <input name="Username" id="Username" style="border: 1px solid black !important;" class="form-control" type="text" readonly required>
+
+                        <label style="color:black;"><i class="fa fa-key"></i> PASSWORD</label>
+                        <input name="Password" id="pass" style="border: 1px solid black !important;" class="form-control" type="password" placeholder="Enter New Password " required>
+
+                        <p id="validatepass"></p>
+
                     </div>
                     <div class="modal-footer">
                         <div>
-                            <button type="submit" class="btn btn-default btn-lg btn-block" style="border-radius: 20px; background-color: #5F67BE; color:white; ">SAVE CHANGES</button>
+                            <button type="button" id="btnSave" class="btn btn-default btn-lg btn-block" onclick="chkpwd()" style="border-radius: 20px; background-color: #5F67BE; color:white; ">SAVE CHANGES</button>
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
@@ -324,7 +372,15 @@
             });
             document.body.style.color = '#dd3e3e';
 
+
+           
+            $(".resetPass").click(function () {
+                $("#Username").val($(this).attr("target-username"))
+                $("#UserId").val($(this).attr("target-id"))
+            });
+
         });
+
     </script>
 }
 
