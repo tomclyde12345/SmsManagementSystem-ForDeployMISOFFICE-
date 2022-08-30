@@ -251,7 +251,7 @@
     chkpwd = function (validate) {
         var str = document.getElementById('pass').value;
         if (str.length < 8) {
-            document.getElementById("validatepass").innerHTML = "Password Length Must Be 8 Char";
+            document.getElementById("validatepass").innerHTML = "Password Length Must Be 8 Character";
             document.getElementById("validatepass").style.color = "Red";
             return ("too_short");
         }
@@ -261,7 +261,7 @@
             return ("no_number");
         }
         else if (str.search(/[a-z]/) == -1) {
-            document.getElementById("validatepass").innerHTML = "Atleast 1 SmallCase letter";
+            document.getElementById("validatepass").innerHTML = "Atleast 1 Lowercase letter";
             document.getElementById("validatepass").style.color = "Red";
             return ("no_smallletter");
         }
@@ -270,8 +270,8 @@
             document.getElementById("validatepass").style.color = "Red";
             return ("no_upperletter");
         }
-        else if (str.search(/[!\#\$\&\^\%\(\)\_\+\.\,\;\:]/) == -1) {
-            document.getElementById("validatepass").innerHTML = "Atleast 1 Special Character letter";
+        else if (str.search(/[!\#\$\&\@('@')*\^\%\(\)\_\+\.\,\;\:]/) == -1) {
+            document.getElementById("validatepass").innerHTML = "Atleast 1 Special Character";
             document.getElementById("validatepass").style.color = "Red";
             return ("no_Specialletter");
         }
@@ -284,13 +284,13 @@
                 toastr.success('UPDATE PASSWORD SUCCESSFULLY');
                 $('#login-modal').modal('hide');
                 setTimeout(function () {
-                  
+
                     window.location.href = "/Manage/Userslist";
                 }, 2000);
             }
         });
         document.getElementById("validatepass").innerHTML = "Successful";
-     
+
         document.getElementById("validatepass").style.color = "Green";
         return ("ok");
     }
@@ -332,7 +332,10 @@
                         <input name="Username" id="Username" style="border: 1px solid black !important;" class="form-control" type="text" readonly required>
 
                         <label style="color:black;"><i class="fa fa-key"></i> PASSWORD</label>
-                        <input name="Password" id="pass" style="border: 1px solid black !important;" class="form-control" type="password" placeholder="Enter New Password " required>
+
+                        <input name="Password" id="pass" style="border: 1px solid black !important;" class="form-control" type="password" placeholder="Enter New Password " required maxlength="20">
+
+                        <input type="checkbox" onclick="myFunction()"><i style="color:black;">Show Password</i>
 
                         <p id="validatepass"></p>
 
@@ -348,7 +351,16 @@
     </div>
 </div>
 
-
+<script>
+    function myFunction() {
+        var x = document.getElementById("pass");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    } 
+</script>
 
 
 <link href="~/lib/datatables.net-jqui/dataTables.jqueryui.css" rel="stylesheet" />

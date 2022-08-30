@@ -95,7 +95,8 @@
                                     </div>
 
 
-                                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @readonly = "readonly", @class = "col-md-12", style = "height:40px;" } })
+                                    @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "user name", required = "required", pattern = @"^([a-zA-Z .&'-]+)$" })
+                                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
 
 
                                 </div>
